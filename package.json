@@ -6,6 +6,6 @@
     "npm-safe-install": "^1.1.0"
   },
   "scripts": {
-    "publish": "npm version minor && npm publish"
+    "publish x": "npm version minor && npm publish"
   }
 }
