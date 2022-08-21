@@ -9,14 +9,13 @@ cp -R $dirOfThisScript/data/projectTemplate/. $rootDirOfProject \
 cp $dirOfThisScript/data/gitignore $rootDirOfProject/.gitignore \
 
 
-if [ -d "$rootDirOfProject/pub/" ]
+
+root="`cd "$rootDirOfProject";pwd`" # the resolved path to the root dir of the project
+
+if [ $root != *-res ]
 then
-    nativeFlag=$(npm --prefix "../pub" pkg get native )
-    if [ $nativeFlag != "true" ]
-    then
-        cp $dirOfThisScript/data/tsconfig.json $rootDirOfProject/pub/
-        cp $dirOfThisScript/data/_globals.ts $rootDirOfProject/pub/src/
-    fi
+    cp $dirOfThisScript/data/tsconfig.json $rootDirOfProject/pub/
+    cp $dirOfThisScript/data/_globals.ts $rootDirOfProject/pub/src/
 fi
 
 parts=("dev" "test")
