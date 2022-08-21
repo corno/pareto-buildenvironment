@@ -15,6 +15,6 @@
     "buildAndTest": "./scripts/buildAndTest.sh"
   },
   "dependencies": {
-    "pareto-ts-validator-lib": "^0.0.0"
+    "pareto-buildenvironment": "^0.0.0"
   }
 }
