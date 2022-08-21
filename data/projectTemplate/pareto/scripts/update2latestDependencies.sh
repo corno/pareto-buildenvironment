@@ -3,6 +3,6 @@
 scriptDir=`realpath $(dirname "$0")`
 rootDir="$scriptDir/../.."
 
-"$scriptDir/updatePackage.sh" $rootDir/dev
-"$scriptDir/updatePackage.sh" $rootDir/pub
-"$scriptDir/updatePackage.sh" $rootDir/test
+"$scriptDir/updatePackage.sh" dev
+"$scriptDir/updatePackage.sh" pub
+"$scriptDir/updatePackage.sh" test
