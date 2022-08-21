@@ -1,31 +1,29 @@
 #!/usr/bin/env bash
-dir=`realpath $(dirname "$0")`
-cp -R ./data/projectTemplate/. $1/pareto \
+rootDirOfProject = $1
+dirOfThisScript=`realpath $(dirname "$0")`
+cp -R $dirOfThisScript/data/projectTemplate/. $rootDirOfProject/pareto \
 
 #npm messes with .gitignore, that's why I need to handle it separately
-cp ./data/gitignore $i/.gitignore \
+cp $dirOfThisScript/data/gitignore $rootDirOfProject/.gitignore \
 
 
-if [ -d "../pub/" ]
+if [ -d "$rootDirOfProject/pub/" ]
 then
     nativeFlag=$(npm --prefix "../pub" pkg get native )
     if [ $nativeFlag != "true" ]
     then
-        cp ./data/tsconfig.json $1/pub/
-        cp ./data/_globals.ts $1/pub/src/
+        cp $dirOfThisScript/data/tsconfig.json $rootDirOfProject/pub/
+        cp $dirOfThisScript/data/_globals.ts $rootDirOfProject/pub/src/
     fi
 fi
 
 parts=("dev" "test")
 for part in "${parts[@]}"
 do
-    if [ -d "../$part/" ]
+    if [ -d "$rootDirOfProject/$part/" ]
     then
-        cp ./data/tsconfig.json "$1/$part/"
-        cp ./data/_globals.ts "$1/$part/src/"
+        cp $dirOfThisScript/data/tsconfig.json "$rootDirOfProject/$part/"
+        cp $dirOfThisScript/data/_globals.ts "$rootDirOfProject/$part/src/"
     fi
 
 done
-
-#update this package because the copied package.json contains an old version of pareto-buildenvironment (by design, the template is not updated every time the package is published)
-"$dir/updatePackage.sh" pareto
