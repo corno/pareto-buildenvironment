@@ -2,7 +2,7 @@
 
 
 scriptDir=`realpath $(dirname "$0")`
-rootDir=`$scriptDir/../..`
+rootDir="$scriptDir/../.."
 
 part="$rootDir/$1"
 

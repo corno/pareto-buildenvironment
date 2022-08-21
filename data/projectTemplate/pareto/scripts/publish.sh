@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 scriptDir=`realpath $(dirname "$0")`
-rootDir=`$scriptDir/../..`
+rootDir="$scriptDir/../.."
 
 #make sure everything is pushed
 git push && \

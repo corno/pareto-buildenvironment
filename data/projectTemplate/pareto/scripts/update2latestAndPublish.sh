@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 scriptDir=`realpath $(dirname "$0")`
-rootDir=`$scriptDir/../..`
+rootDir="$scriptDir/../.."
 
 #validate that everything is committed and pushed (to make sure we're not messing with open work with updatePackage)
 git diff --exit-code && git log origin/master..master --exit-code && \
