@@ -1,3 +1,7 @@
 #!/usr/bin/env bash
-find .. -type d -empty -delete
+
+scriptDir=`realpath $(dirname "$0")`
+rootDir=`$scriptDir/../..`
+
+find $rootDir -type d -empty -delete
 

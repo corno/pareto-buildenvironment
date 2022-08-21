@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
-dir=`realpath $(dirname "$0")`
 
-"$dir/updatePackage.sh" pareto
+scriptDir=`realpath $(dirname "$0")`
+rootDir=`$scriptDir/../..`
 
-"$dir/../node_modules/pareto-buildenvironment/copyTemplate.sh" "$dir/../../"
+"$scriptDir/updatePackage.sh" pareto
+
+"$rootDir/pareto/node_modules/pareto-buildenvironment/copyTemplate.sh" "$rootDir"

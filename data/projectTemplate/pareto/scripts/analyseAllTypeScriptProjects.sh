@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-dir=`realpath $(dirname "$0")`
+scriptDir=`realpath $(dirname "$0")`
+rootDir=`$scriptDir/../..`
 
-$dir/analyseTypeScriptProject.sh ../pub/tsconfig.json && \
-$dir/analyseTypeScriptProject.sh ../test/tsconfig.json
+$scriptDir/analyseTypeScriptProject.sh $rootDir/pub/tsconfig.json && \
+$scriptDir/analyseTypeScriptProject.sh $rootDir/test/tsconfig.json

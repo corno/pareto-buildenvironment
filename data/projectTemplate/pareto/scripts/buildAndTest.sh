@@ -1,17 +1,20 @@
 #!/usr/bin/env bash
 
-if [ -d "../dev" ]
+scriptDir=`realpath $(dirname "$0")`
+rootDir=`$scriptDir/../..`
+
+if [ -d "$rootDir/dev" ]
 then
-    "$(dirname "$0")"/buildDevPackage.sh && \
-    rm -rf ../pub/src/generated && \
-    rm -rf ../test/src/generated && \
-    node ../dev/dist/bin/generateCode.js ..
+    $scriptDir/buildDevPackage.sh && \
+    rm -rf $rootDir/pub/src/generated && \
+    rm -rf $rootDir/test/src/generated && \
+    node $rootDir/dev/dist/bin/generateCode.js ..
 fi \
 
 
-"$(dirname "$0")"/buildPubAndTestPackages.sh && \
-if [ -d "../test" ]
+$scriptDir/buildPubAndTestPackages.sh && \
+if [ -d "$rootDir/test" ]
 then
-    node ../test/dist/bin/index.js ../test/data
+    node $rootDir/test/dist/bin/index.js $rootDir/test/data
 fi \
 

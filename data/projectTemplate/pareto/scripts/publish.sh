@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
-dir=`realpath $(dirname "$0")`
+
+scriptDir=`realpath $(dirname "$0")`
+rootDir=`$scriptDir/../..`
 
 #make sure everything is pushed
 git push && \
@@ -8,24 +10,24 @@ git push && \
 git diff --exit-code && git log origin/master..master --exit-code && \
 
 #make sure latest buildenvironment is installed
-"$dir/update2latestBuildEnvironment.sh" && \
+"$scriptDir/update2latestBuildEnvironment.sh" && \
 
 #make sure latest packages are installed
-"$dir/updatePackage.sh" "../pub" && \
+"$scriptDir/updatePackage.sh" "../pub" && \
 
 #buildAndTest
-"$dir/buildAndTest.sh" && \
+"$scriptDir/buildAndTest.sh" && \
 
 #validate that everything is still committed after the update and build
 git diff --exit-code && \
 
 #bump version and store in variable
-pushd "../pub" > /dev/null && \
+pushd "$rootDir/pub" > /dev/null && \
 newVersion=$(npm version "$1") && \
 popd && \
 
 #commit package.json with new version number
-git add .. && \
+git add $rootDir && \
 git commit -m "version bumped to $newVersion" && \
 
 #create a tag
@@ -33,6 +35,6 @@ git tag -a "$newVersion" -m "$newVersion" && \
 git push && \
 
 #publish
-pushd "../pub" > /dev/null && \
+pushd "$rootDir/pub" > /dev/null && \
 npm publish && \
 popd

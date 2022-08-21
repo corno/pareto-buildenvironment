@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 
-part="../$1"
+
+scriptDir=`realpath $(dirname "$0")`
+rootDir=`$scriptDir/../..`
+
+part="$rootDir/$1"
 
 if [ -d "$part" ]
 then
