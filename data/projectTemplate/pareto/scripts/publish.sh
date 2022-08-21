@@ -13,7 +13,7 @@ git diff --exit-code && git log origin/master..master --exit-code && \
 "$scriptDir/update2latestBuildEnvironment.sh" && \
 
 #make sure latest packages are installed
-"$scriptDir/updatePackage.sh" "../pub" && \
+"$scriptDir/update2latestDependencies.sh" && \
 
 #buildAndTest
 "$scriptDir/buildAndTest.sh" && \
