@@ -3,15 +3,15 @@
 if [ -d "../dev" ]
 then
     "$(dirname "$0")"/buildDevPackage.sh && \
-    rm -rf ../api/src/generated && \
-    rm -rf ../lib/src/generated && \
-    node ../dev/dist/esc/bin/generateCode.js ..
+    rm -rf ../pub/src/generated && \
+    rm -rf ../test/src/generated && \
+    node ../dev/dist/bin/generateCode.js ..
 fi \
 
 
 "$(dirname "$0")"/buildPubAndTestPackages.sh && \
 if [ -d "../test" ]
 then
-    node ../test/dist/esc/bin/index.js ../test/data
+    node ../test/dist/bin/index.js ../test/data
 fi \
 
