@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 dir=`realpath $(dirname "$0")`
-cp -R ./node_modules/pareto-buildenvironment/data/projectTemplate/. .. \
+cp -R ./data/projectTemplate/. $1/pareto \
 
 #npm messes with .gitignore, that's why I need to handle it separately
-cp ./node_modules/pareto-buildenvironment/data/gitignore ../.gitignore \
+cp ./data/gitignore $i/.gitignore \
 
 
 if [ -d "../pub/" ]
@@ -11,8 +11,8 @@ then
     nativeFlag=$(npm --prefix "../pub" pkg get native )
     if [ $nativeFlag != "true" ]
     then
-        cp ./node_modules/pareto-buildenvironment/data/tsconfig.json ../pub/
-        cp ./node_modules/pareto-buildenvironment/data/_globals.ts ../pub/src/
+        cp ./data/tsconfig.json $1/pub/
+        cp ./data/_globals.ts $1/pub/src/
     fi
 fi
 
@@ -21,8 +21,8 @@ for part in "${parts[@]}"
 do
     if [ -d "../$part/" ]
     then
-        cp ./node_modules/pareto-buildenvironment/data/tsconfig.json "../$part/"
-        cp ./node_modules/pareto-buildenvironment/data/_globals.ts "../$part/src/"
+        cp ./data/tsconfig.json "$1/$part/"
+        cp ./data/_globals.ts "$1/$part/src/"
     fi
 
 done
