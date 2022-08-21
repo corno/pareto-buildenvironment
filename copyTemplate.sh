@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 rootDirOfProject = $1
+
+echo "copying to $rootDirOfThisProject"
 dirOfThisScript=`realpath $(dirname "$0")`
 cp -R $dirOfThisScript/data/projectTemplate/. $rootDirOfProject/pareto \
 
