@@ -3,4 +3,4 @@ dir=`realpath $(dirname "$0")`
 
 "$dir/updatePackage.sh" pareto
 
-"$dir/../node_modules/pareto-buildenvironment/copyTemplate.sh $dir/../../"
+"$dir/../node_modules/pareto-buildenvironment/copyTemplate.sh" "$dir/../../"
