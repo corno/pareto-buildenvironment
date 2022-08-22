@@ -12,7 +12,7 @@ cp $dirOfThisScript/data/gitignore $rootDirOfProject/.gitignore \
 
 root="`cd "$rootDirOfProject";pwd`" # the resolved path to the root dir of the project
 
-if [[ $root == *-res ]]
+if [[ $root == *-res || $root == *-core ]]
 then
     echo "not copying typescript files to pub"
 else
