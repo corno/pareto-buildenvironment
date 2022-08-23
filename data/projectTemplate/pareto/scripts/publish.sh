@@ -21,7 +21,7 @@ git diff --exit-code && git log origin/master..master --exit-code && \
 "$scriptDir/buildAndTest.sh" && \
 
 #validate that everything is still committed after the update and build
-git diff --exit-code && \
+git diff --exit-code && git log origin/master..master --exit-code && \
 
 #bump version and store in variable
 pushd "$rootDir/pub" > /dev/null && \
