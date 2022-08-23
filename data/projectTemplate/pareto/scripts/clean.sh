@@ -12,7 +12,10 @@ git diff --exit-code && git log origin/master..master --exit-code && \
 #make sure latest buildenvironment is installed
 "$scriptDir/update2latestBuildEnvironment.sh" && \
 
-"$scriptDir/clean.sh" && \
+#delete the node_modules
+rm -rf $rootDir/pub/node_modules && \
+rm -rf $rootDir/dev/node_modules && \
+rm -rf $rootDir/test/node_modules && \
 
 #make sure latest packages are installed
 "$scriptDir/update2latestDependencies.sh" && \
@@ -26,7 +29,7 @@ git diff --exit-code && \
 #bump version and store in variable
 pushd "$rootDir/pub" > /dev/null && \
 
-interfaceVersion=`npm pkg get interface-fingerprint` && \
+interfaceVersion=`npm pkg get interface-fingerprint`
 if [ $interfaceVersion == "{}" ]
 then
     #no interface fingerprint
@@ -34,10 +37,10 @@ then
     "$scriptDir/publishIfContentChanged.sh" "minor"
 
 else
-    name=$(npm pkg get name | cut -c2- | rev | cut -c2- |rev) && \
+    name=$(npm pkg get name | cut -c2- | rev | cut -c2- |rev) 
 
-    localFingerprint=$(npm pkg get interface-fingerprint | cut -c2- | rev | cut -c2- |rev) && \
-    remoteFingerprint=$(npm view $name@latest interface-fingerprint) && \
+    localFingerprint=$(npm pkg get interface-fingerprint | cut -c2- | rev | cut -c2- |rev)
+    remoteFingerprint=$(npm view $name@latest interface-fingerprint)
 
     if [ $localFingerprint != $remoteFingerprint ]
     then
