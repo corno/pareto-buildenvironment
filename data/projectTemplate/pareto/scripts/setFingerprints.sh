@@ -15,8 +15,8 @@ then
     pushd "$pubDir" > /dev/null
     
     #first take care of the interface fingerprint
-    interfaceDir="$1/src/interface"
-    if [ -d "$1/src/interface"]
+    interfaceDir="./src/interface"
+    if [ -d "$interfaceDir" ]
     then
         npm pkg set interface-fingerprint=`tar -cf - $interfaceDir | shasum | cut -c1-40`
     else

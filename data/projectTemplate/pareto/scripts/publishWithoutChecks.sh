@@ -1,12 +1,13 @@
 #!/usr/bin/env bash
+generation=$1
 
 scriptDir=`realpath $(dirname "$0")`
 rootDir="$scriptDir/../.."
 
 #bump version and store in variable
 pushd "$rootDir/pub" > /dev/null && \
-newVersion=$(npm version "$1") && \
-echo "version bumped: $1" && \
+newVersion=$(npm version "$generation") && \
+echo "version bumped: $generation" && \
 popd && \
 
 #commit package.json with new version number

@@ -3,6 +3,7 @@ rootDirOfProject=$1
 
 echo "copying to $rootDirOfProject"
 dirOfThisScript=`realpath $(dirname "$0")`
+rm -rf $rootDirOfProject/pareto/scripts/*
 cp -R $dirOfThisScript/data/projectTemplate/. $rootDirOfProject \
 
 #npm messes with .gitignore, that's why I need to handle it separately

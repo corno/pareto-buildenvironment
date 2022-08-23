@@ -34,16 +34,18 @@ if [ $interfaceVersion == "{}" ]
 then
     #no interface fingerprint
 
-    "$scriptDir/publishIfContentChanged.sh minor"
+    "$scriptDir/publishIfContentChanged.sh" "minor"
 
 else
+    name=$(npm pkg get name | cut -c2- | rev | cut -c2- |rev) 
+
     localFingerprint=$(npm pkg get interface-fingerprint | cut -c2- | rev | cut -c2- |rev)
     remoteFingerprint=$(npm view $name@latest interface-fingerprint)
 
     if [ $localFingerprint != $remoteFingerprint ]
     then
-        "$scriptDir/publishWithoutChecksAndBalances.sh minor"
+        "$scriptDir/publishWithoutChecks.sh" "minor"
     else
-        "$scriptDir/publishIfContentChanged.sh path"
+        "$scriptDir/publishIfContentChanged.sh" "patch"
     fi
 fi

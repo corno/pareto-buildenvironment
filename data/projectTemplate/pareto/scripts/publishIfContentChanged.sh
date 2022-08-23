@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+generation=$1
+
 scriptDir=`realpath $(dirname "$0")`
 rootDir="$scriptDir/../.."
 
@@ -15,5 +17,5 @@ if [ $localFingerprint == $remoteFingerprint ]
 then
     echo "no changes detected, nothing is published"
 else
-    $scriptDir/publishWithoutChecksAndBalances.sh $1
+    $scriptDir/publishWithoutChecks.sh $generation
 fi
