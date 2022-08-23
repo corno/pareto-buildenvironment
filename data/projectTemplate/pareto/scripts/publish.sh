@@ -29,7 +29,7 @@ git diff --exit-code && \
 #bump version and store in variable
 pushd "$rootDir/pub" > /dev/null && \
 
-interfaceVersion=`npm pkg get interface-fingerprint`
+interfaceVersion=`npm pkg get interface-fingerprint` && \
 if [ $interfaceVersion == "{}" ]
 then
     #no interface fingerprint
@@ -37,10 +37,10 @@ then
     "$scriptDir/publishIfContentChanged.sh" "minor"
 
 else
-    name=$(npm pkg get name | cut -c2- | rev | cut -c2- |rev) 
+    name=$(npm pkg get name | cut -c2- | rev | cut -c2- |rev) && \
 
-    localFingerprint=$(npm pkg get interface-fingerprint | cut -c2- | rev | cut -c2- |rev)
-    remoteFingerprint=$(npm view $name@latest interface-fingerprint)
+    localFingerprint=$(npm pkg get interface-fingerprint | cut -c2- | rev | cut -c2- |rev) && \
+    remoteFingerprint=$(npm view $name@latest interface-fingerprint) && \
 
     if [ $localFingerprint != $remoteFingerprint ]
     then
