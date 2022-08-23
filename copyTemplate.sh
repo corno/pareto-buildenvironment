@@ -11,12 +11,13 @@ cp $dirOfThisScript/data/gitignore $rootDirOfProject/.gitignore \
 
 
 root="`cd "$rootDirOfProject";pwd`" # the resolved path to the root dir of the project
+rootName=`basename $root`
 
-if [[ $root == rsi-* || $root == pareto-core-* ]]
+if [[ $rootName == rsi-* || $rootName == pareto-core-* ]]
 then
-    echo "not copying typescript files to pub"
+    echo "$rootName; not copying typescript files to pub"
 else
-    echo "copying typescript files to pub"
+    echo "$rootName; copying typescript files to pub"
 
     cp $dirOfThisScript/data/tsconfig.json $rootDirOfProject/pub/
     cp $dirOfThisScript/data/_globals.ts $rootDirOfProject/pub/src/
