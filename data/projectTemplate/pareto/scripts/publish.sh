@@ -12,6 +12,11 @@ git diff --exit-code && git log origin/master..master --exit-code && \
 #make sure latest buildenvironment is installed
 "$scriptDir/update2latestBuildEnvironment.sh" && \
 
+#delete the node_modules
+rm -rf $rootDir/pub/node_modules && \
+rm -rf $rootDir/dev/node_modules && \
+rm -rf $rootDir/test/node_modules && \
+
 #make sure latest packages are installed
 "$scriptDir/update2latestDependencies.sh" && \
 
@@ -23,18 +28,22 @@ git diff --exit-code && \
 
 #bump version and store in variable
 pushd "$rootDir/pub" > /dev/null && \
-newVersion=$(npm version "$1") && \
-popd && \
 
-#commit package.json with new version number
-git add $rootDir && \
-git commit -m "version bumped to $newVersion" && \
+interfaceVersion=`npm pkg get interface-fingerprint`
+if [ $interfaceVersion == "{}" ]
+then
+    #no interface fingerprint
 
-#create a tag
-git tag -a "$newVersion" -m "$newVersion" && \
-git push && \
+    "$scriptDir/publishIfContentChanged.sh minor"
 
-#publish
-pushd "$rootDir/pub" > /dev/null && \
-npm publish && \
-popd
+else
+    localFingerprint=$(npm pkg get interface-fingerprint | cut -c2- | rev | cut -c2- |rev)
+    remoteFingerprint=$(npm view $name@latest interface-fingerprint)
+
+    if [ $localFingerprint != $remoteFingerprint ]
+    then
+        "$scriptDir/publishWithoutChecksAndBalances.sh minor"
+    else
+        "$scriptDir/publishIfContentChanged.sh path"
+    fi
+fi
