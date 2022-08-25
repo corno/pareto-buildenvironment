@@ -14,7 +14,7 @@ cp $dirOfThisScript/data/gitignore $rootDirOfProject/.gitignore \
 root="`cd "$rootDirOfProject";pwd`" # the resolved path to the root dir of the project
 rootName=`basename $root`
 
-if [[ $rootName == rsi-* || $rootName == pareto-core-* ]]
+if [[ $rootName == res-* || $rootName == pareto-core-* ]]
 then
     echo "$rootName; not copying typescript files to pub"
 else
