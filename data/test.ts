@@ -7,7 +7,13 @@ import * as test from "lib-pareto-test"
 import * as diff from "res-pareto-diff"
 import * as fs from "res-pareto-filesystem"
 
-import { getTestSet } from "../imp/getTestSet"
+import { createGetTestSet } from "../imp/createGetTestSet"
+import { getDepedencies } from "./getDependencies"
+
+
+const getTestSet = createGetTestSet(
+    getDepedencies()
+)
 
 pe.runProgram(
     test.createTester(
