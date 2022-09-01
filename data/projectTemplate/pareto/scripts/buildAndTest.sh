@@ -24,5 +24,4 @@ then
     echo "$rootName; no testing for api"
 else
     node $rootDir/test/dist/bin/test.js $rootDir/test/data
-fi \
-
+fi
