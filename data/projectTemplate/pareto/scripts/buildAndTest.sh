@@ -15,6 +15,6 @@ fi \
 $scriptDir/buildPubAndTestPackages.sh && \
 if [ -d "$rootDir/test" ]
 then
-    node $rootDir/test/dist/bin/index.js $rootDir/test/data
+    node $rootDir/test/dist/bin/test.js $rootDir/test/data
 fi \
 
