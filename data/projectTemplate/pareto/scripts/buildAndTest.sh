@@ -1,7 +1,13 @@
 #!/usr/bin/env bash
+rootDirOfProject=$1
 
 scriptDir=`realpath $(dirname "$0")`
 rootDir="$scriptDir/../.."
+
+
+
+root="`cd "$rootDirOfProject";pwd`" # the resolved path to the root dir of the project
+rootName=`basename $root`
 
 if [ -d "$rootDir/dev" ]
 then
