@@ -13,8 +13,10 @@ fi \
 
 
 $scriptDir/buildPubAndTestPackages.sh && \
-if [ -d "$rootDir/test" ]
+if [[ $rootName == api-* ]]
 then
+    echo "$rootName; no testing for api"
+else
     node $rootDir/test/dist/bin/test.js $rootDir/test/data
 fi \
 
