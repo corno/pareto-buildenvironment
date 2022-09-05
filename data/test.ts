@@ -7,7 +7,7 @@ import * as test from "lib-pareto-test"
 import * as diff from "res-pareto-diff"
 import * as fs from "res-pareto-filesystem"
 
-import { createGetTestset } from "../imp/public/createGetTestset"
+import { createGetTestset } from "../imp"
 import { dependencies } from "../dependencies/dependencies"
 
 
