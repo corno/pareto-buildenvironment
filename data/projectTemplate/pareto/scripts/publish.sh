@@ -10,7 +10,7 @@ git push && \
 git diff --exit-code && git log origin/master..master --exit-code && \
 
 #make sure latest buildenvironment is installed
-"$scriptDir/update2latestBuildEnvironment.sh" && \
+"$scriptDir/../update2latestBuildEnvironment.sh" && \
 
 "$scriptDir/clean.sh" && \
 
