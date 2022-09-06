@@ -18,11 +18,9 @@ fi \
 
 
 $scriptDir/buildPubAndTestPackages.sh && \
-if [[ $rootName == api-* ]]
+if [[ $rootName == api-* || $rootName == pareto-core-* ]]
 then
     echo "$rootName; no testing for api"
 else
-    echo "ECHT??????????????"
-    echo "$rootName"
     node $rootDir/test/dist/bin/test.js $rootDir/test/data
 fi
