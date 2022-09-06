@@ -4,6 +4,8 @@
 /pub/node_modules/
 /pub/src/generated/
 /pareto/node_modules/
+/pareto/package.json/
+/pareto/package-lock.json/
 /pareto/scripts/
 /test/dist/
 /test/node_modules/
