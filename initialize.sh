@@ -36,7 +36,7 @@ then
 else
     cp $dirOfThisScript/data/tsconfig.json "$rootDirOfProject/test/"
     cp $dirOfThisScript/data/_globals.ts "$rootDirOfProject/test/src/"
-    cp $dirOfThisScript/data/test.ts "$rootDirOfProject/test/src/bin/"
+    cp $dirOfThisScript/data/test.p.ts "$rootDirOfProject/test/src/bin/"
 
     cd "$rootDirOfProject/test/"
     npm install pareto-core-exe@latest
