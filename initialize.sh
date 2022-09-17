@@ -40,4 +40,5 @@ else
 
     cd "$rootDirOfProject/test/"
     npm install lib-pareto-test@latest
+    npm install pareto-core-exe@latest
 fi
