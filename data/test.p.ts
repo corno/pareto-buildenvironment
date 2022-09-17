@@ -9,7 +9,7 @@ import { dependencies } from "../dependencies/dependencies.p"
 
 
 pe.runProgram(
-    test.createTester(
+    test.f_createTester(
         null,
         {
             getTestSet: createGetTestset(
