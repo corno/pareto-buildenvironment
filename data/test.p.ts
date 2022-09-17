@@ -6,6 +6,7 @@ import * as test from "lib-pareto-test"
 
 import { createGetTestset } from "../implementation"
 import { dependencies } from "../dependencies/dependencies.p"
+import { data } from "../data/data.p"
 
 
 pe.runProgram(
@@ -13,6 +14,7 @@ pe.runProgram(
         null,
         {
             getTestSet: createGetTestset(
+                data,
                 dependencies
             ),
             dependencies: test.dependencies,
