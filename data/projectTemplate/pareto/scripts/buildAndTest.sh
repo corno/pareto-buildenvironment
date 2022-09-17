@@ -22,5 +22,5 @@ if [[ $rootName == api-* || $rootName == pareto-core-* ]]
 then
     echo "$rootName; no testing for api"
 else
-    node $rootDir/test/dist/bin/test.js $rootDir/test/data
+    node $rootDir/test/dist/bin/test.p.js $rootDir/test/data
 fi
