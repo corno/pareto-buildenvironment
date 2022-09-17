@@ -39,8 +39,5 @@ else
     cp $dirOfThisScript/data/test.p.ts "$rootDirOfProject/test/src/bin/"
 
     cd "$rootDirOfProject/test/"
-    npm install pareto-core-exe@latest
     npm install lib-pareto-test@latest
-    npm install res-pareto-filesystem@latest
-    npm install res-pareto-diff@latest
 fi
