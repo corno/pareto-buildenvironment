@@ -10,6 +10,7 @@ import { dependencies } from "../dependencies/dependencies.p"
 
 pe.runProgram(
     test.createTester(
+        null,
         {
             getTestSet: createGetTestset(
                 dependencies
