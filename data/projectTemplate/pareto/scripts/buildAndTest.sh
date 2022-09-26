@@ -16,9 +16,8 @@ then
     node $rootDir/dev/dist/bin/generateCode.js ..
 fi \
 
-
 $scriptDir/buildPubAndTestPackages.sh && \
-if [[ $rootName == api-* || $rootName == pareto-core-* ]]
+if [[ $rootName == api-* || $rootName == pareto-core-types ]]
 then
     echo "$rootName; no testing for api"
 else
