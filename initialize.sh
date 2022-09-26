@@ -30,7 +30,7 @@ else
     cp $dirOfThisScript/data/_globals.ts $rootDirOfProject/pub/src/
 fi
 
-if [[ $rootName == api-* || $rootName == pareto-core-* ]]
+if [[ $rootName == api-* || $rootName == pareto-core-types ]]
 then
     echo "$rootName; not copying test files"
 else
