@@ -3,7 +3,8 @@
   "version": "0.108.0",
   "dependencies": {
     "npm-check-updates": "^16.0.5",
-    "npm-safe-install": "^1.1.0"
+    "npm-safe-install": "^1.1.0",
+    "typescript": "^4.9.3"
   },
   "scripts": {
     "publish x": "npm version minor && npm publish"
