@@ -7,6 +7,6 @@
     "typescript": "^4.9.3"
   },
   "scripts": {
-    "publish x": "npm version minor && npm publish"
+    "publish x": "npm version minor && git push && npm publish"
   }
 }
