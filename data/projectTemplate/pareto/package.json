@@ -1,14 +1,11 @@
 {
   "scripts": {
-    "update2latestBuildEnvironment": "./update2latestBuildEnvironment.sh",
-    "update-dependencies": "./scripts/update2latestDependencies.sh",
-    "buildAndTest": "./scripts/buildAndTest.sh",
-    "analysePackage": "./scripts/analysePackage.sh",
-    "analyseTypeScript": "./scripts/analyseAllTypeScriptProjects.sh",
-    "pub is changed": "./scripts/isPackageChanged.sh",
-    "publish": "./scripts/publish.sh"
-  },
-  "dependencies": {
-    "pareto-buildenvironment": "^0.0.0"
+    "update2latestBuildEnvironment": "./pareto/scripts/update2latestBuildEnvironment.sh",
+    "update-dependencies": "./pareto/scripts/update2latestDependencies.sh",
+    "buildAndTest": "./pareto/scripts/buildAndTest.sh",
+    "analysePackage": "./pareto/scripts/analysePackage.sh",
+    "analyseTypeScript": "./pareto/scripts/analyseAllTypeScriptProjects.sh",
+    "pub is changed": "./pareto/scripts/isPackageChanged.sh",
+    "publish": "./pareto/scripts/publish.sh"
   }
 }

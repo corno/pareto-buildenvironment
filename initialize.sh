@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-rootDirOfProject=$1
+paretoBuildEnvDir=$1
+rootDirOfProject="$1/.."
 
 echo "copying to $rootDirOfProject"
 dirOfThisScript=`realpath $(dirname "$0")`
@@ -37,8 +38,4 @@ else
     cp $dirOfThisScript/data/tsconfig.json "$rootDirOfProject/test/"
     cp $dirOfThisScript/data/_globals.ts "$rootDirOfProject/test/src/"
     cp $dirOfThisScript/data/test.generated.p.ts "$rootDirOfProject/test/src/bin/"
-
-    cd "$rootDirOfProject/test/"
-    npm install lib-pareto-test@latest
-    npm install pareto-core-exe@latest
 fi
