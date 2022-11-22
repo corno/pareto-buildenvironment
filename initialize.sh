@@ -15,10 +15,17 @@ cp $dirOfThisScript/data/gitignore $rootDirOfProject/.gitignore \
 root="`cd "$rootDirOfProject";pwd`" # the resolved path to the root dir of the project
 rootName=`basename $root`
 
-if [ -d "$rootDirOfProject/dev/" ]
+devDir="$rootDirOfProject/dev/"
+pubDir="$rootDirOfProject/pub/"
+testDir="$rootDirOfProject/test/"
+
+
+
+if [ -d $devDir ]
 then
-    cp $dirOfThisScript/data/tsconfig.json "$rootDirOfProject/dev/"
-    cp $dirOfThisScript/data/_globals.ts "$rootDirOfProject/dev/src/"
+    cp $dirOfThisScript/data/tsconfig.json "$devDir"
+    cp $dirOfThisScript/data/_globals.ts "$devDir/src/"
+    npm --prefix "$devDir" install pareto-core@latest
 fi
 
 if [[ $rootName == res-* || $rootName == pareto-core-* ]]
@@ -27,15 +34,17 @@ then
 else
     echo "$rootName; copying typescript files to pub"
 
-    cp $dirOfThisScript/data/tsconfig.json $rootDirOfProject/pub/
-    cp $dirOfThisScript/data/_globals.ts $rootDirOfProject/pub/src/
+    cp $dirOfThisScript/data/tsconfig.json "$pubDir"
+    cp $dirOfThisScript/data/_globals.ts "$pubDir/src/"
+    npm --prefix "$pubDir" install pareto-core@latest
 fi
 
 if [[ $rootName == glo-* || $rootName == pareto-core-types ]]
 then
     echo "$rootName; not copying test files"
 else
-    cp $dirOfThisScript/data/tsconfig.json "$rootDirOfProject/test/"
-    cp $dirOfThisScript/data/_globals.ts "$rootDirOfProject/test/src/"
-    cp $dirOfThisScript/data/test.generated.p.ts "$rootDirOfProject/test/src/bin/"
+    cp $dirOfThisScript/data/tsconfig.json "$testDir/"
+    cp $dirOfThisScript/data/_globals.ts "$testDir/src/"
+    cp $dirOfThisScript/data/test.generated.p.ts "$testDir/src/bin/"
+    npm --prefix "$testDir" install pareto-core@latest
 fi
