@@ -50,4 +50,5 @@ then
     cp $dirOfThisScript/data/_globals.ts "$testDir/src/"
     cp $dirOfThisScript/data/test.generated.p.ts "$testDir/src/bin/"
     npm --prefix "$testDir" install pareto-core@latest
+    npm --prefix "$testDir" install libpareto-test@latest
 fi
