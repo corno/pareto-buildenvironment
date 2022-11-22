@@ -20,7 +20,7 @@ pubDir="$rootDirOfProject/pub/"
 testDir="$rootDirOfProject/test/"
 
 
-
+#dev
 if [ -d $devDir ]
 then
     cp $dirOfThisScript/data/tsconfig.json "$devDir"
@@ -28,23 +28,30 @@ then
     npm --prefix "$devDir" install pareto-core@latest
 fi
 
-if [[ $rootName == res-* || $rootName == pareto-core-* ]]
+#pub
+if [[ $rootName == lib-* || $rootName=exe-* ]]
 then
-    echo "$rootName; not copying typescript files to pub"
-else
-    echo "$rootName; copying typescript files to pub"
-
     cp $dirOfThisScript/data/tsconfig.json "$pubDir"
     cp $dirOfThisScript/data/_globals.ts "$pubDir/src/"
     npm --prefix "$pubDir" install pareto-core@latest
+
+else
+    echo "$rootName; not copying typescript files to pub"
 fi
 
-if [[ $rootName == glo-* || $rootName == pareto-core-types ]]
+if [[ $rootName == res-* ]]
 then
-    echo "$rootName; not copying test files"
+    npm --prefix "$pubDir" install pareto-core-internals@latest
 else
+fi
+
+#test
+if [[ $rootName == res-* || $rootName == lib-* || $rootName=exe-* ]]
+then
     cp $dirOfThisScript/data/tsconfig.json "$testDir/"
     cp $dirOfThisScript/data/_globals.ts "$testDir/src/"
     cp $dirOfThisScript/data/test.generated.p.ts "$testDir/src/bin/"
     npm --prefix "$testDir" install pareto-core@latest
+else
+    echo "$rootName; not copying test files"
 fi
