@@ -30,7 +30,7 @@ fi
 
 
 #pub
-if [[ $rootName == lib-* || $rootName=exe-* ]]
+if [[ $rootName == lib-* || $rootName == exe-* ]]
 then
     cp $dirOfThisScript/data/tsconfig.json "$pubDir"
     cp $dirOfThisScript/data/_globals.ts "$pubDir/src/"
@@ -44,7 +44,7 @@ fi
 
 
 #test
-if [[ $rootName == res-* || $rootName == lib-* || $rootName=exe-* ]]
+if [[ $rootName == res-* || $rootName == lib-* || $rootName == exe-* ]]
 then
     cp $dirOfThisScript/data/tsconfig.json "$testDir/"
     cp $dirOfThisScript/data/_globals.ts "$testDir/src/"
