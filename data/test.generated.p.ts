@@ -11,7 +11,7 @@ import { createGetTestset } from "../implementation"
 
 
 pe.runProgram(
-    ($, $i) => {
+    ($) => {
         test.$b.createTestProgram(
             {
                 getTestSet: createGetTestset(
