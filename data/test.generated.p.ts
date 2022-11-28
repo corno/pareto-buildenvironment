@@ -18,6 +18,15 @@ pe.runProgram(
                     data,
                     dependencies
                 ),
+                log: ($) => {
+                    pl.logDebugMessage($)
+                },
+                logError: ($) => {
+                    pl.logDebugMessage($)
+                },
+                onTestErrors: ($) => {
+                    pl.logDebugMessage("TEST ERROR")
+                },
             },
         )(
            $.arguments
