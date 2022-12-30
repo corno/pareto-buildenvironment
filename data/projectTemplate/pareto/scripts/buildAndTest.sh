@@ -21,5 +21,5 @@ if [[ $rootName == glo-* || $rootName == pareto-core-types ]]
 then
     echo "$rootName; no testing for glossary or core-types"
 else
-    node $rootDir/test/dist/bin/test.generated.p.js $rootDir/test/data
+    node $rootDir/test/dist/bin/test.generated.js $rootDir/test/data
 fi

@@ -57,7 +57,7 @@ if [[ $rootName == res-* || $rootName == lib-* || $rootName == exe-* ]]
 then
     cp $dirOfThisScript/data/tsconfig.json "$testDir/"
     cp $dirOfThisScript/data/_globals.ts "$testDir/src/"
-    cp $dirOfThisScript/data/test.generated.p.ts "$testDir/src/bin/"
+    cp $dirOfThisScript/data/test.generated.ts "$testDir/src/bin/"
     npm --prefix "$testDir" install pareto-core-exe@latest
     npm --prefix "$testDir" install pareto-core-lib@latest
     npm --prefix "$testDir" install pareto-core-raw@latest
