@@ -13,7 +13,7 @@ then
     $scriptDir/buildDevPackage.sh && \
     rm -rf $rootDir/pub/src/generated && \
     rm -rf $rootDir/test/src/generated && \
-    node $rootDir/dev/dist/bin/generateCode.js ../..
+    node $rootDir/dev/dist/bin/generateCode.generated.js ../..
 fi \
 
 $scriptDir/buildPubAndTestPackages.sh && \

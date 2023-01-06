@@ -23,8 +23,6 @@ testDir="$rootDirOfProject/test/"
 #dev
 if [ -d $devDir ]
 then
-    cp $dirOfThisScript/data/tsconfig.json "$devDir"
-    cp $dirOfThisScript/data/_globals.ts "$devDir/src/"
     npm --prefix "$devDir" install pareto-core-exe@latest
     npm --prefix "$devDir" install pareto-core-lib@latest
     npm --prefix "$devDir" install pareto-core-raw@latest
@@ -39,8 +37,6 @@ then
 fi
 if [[ $rootName == lib-* || $rootName == exe-* ]]
 then
-    cp $dirOfThisScript/data/tsconfig.json "$pubDir"
-    cp $dirOfThisScript/data/_globals.ts "$pubDir/src/"
     npm --prefix "$pubDir" install pareto-core-lib@latest
     npm --prefix "$pubDir" install pareto-core-raw@latest
     npm --prefix "$pubDir" install pareto-core-state@latest
@@ -55,9 +51,6 @@ fi
 #test
 if [[ $rootName == res-* || $rootName == lib-* || $rootName == exe-* ]]
 then
-    cp $dirOfThisScript/data/tsconfig.json "$testDir/"
-    cp $dirOfThisScript/data/_globals.ts "$testDir/src/"
-    cp $dirOfThisScript/data/test.generated.ts "$testDir/src/bin/"
     npm --prefix "$testDir" install pareto-core-exe@latest
     npm --prefix "$testDir" install pareto-core-lib@latest
     npm --prefix "$testDir" install pareto-core-raw@latest
