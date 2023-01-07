@@ -7,9 +7,6 @@ dirOfThisScript=`realpath $(dirname "$0")`
 rm -rf $rootDirOfProject/pareto/scripts/*
 cp -R $dirOfThisScript/data/projectTemplate/. $rootDirOfProject \
 
-#npm messes with .gitignore, that's why I need to handle it separately
-cp $dirOfThisScript/data/gitignore $rootDirOfProject/.gitignore \
-
 
 
 root="`cd "$rootDirOfProject";pwd`" # the resolved path to the root dir of the project
