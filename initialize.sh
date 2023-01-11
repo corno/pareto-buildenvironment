@@ -53,5 +53,4 @@ then
     npm --prefix "$testDir" install pareto-core-raw@latest
     npm --prefix "$testDir" install pareto-core-state@latest
     npm --prefix "$testDir" install lib-pareto-test@latest
-    npm --prefix "$testDir" install lib-pareto-exe@latest
 fi
