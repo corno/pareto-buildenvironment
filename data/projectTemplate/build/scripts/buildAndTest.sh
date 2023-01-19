@@ -16,7 +16,7 @@ then
 fi && \
 
 
-"$scriptDir/buildParetpPackage.sh" && \
+"$scriptDir/buildParetoPackage.sh" && \
 npx tsc -p "$rootDir/pareto" && \
 node "$rootDir/pareto/dist/bin/generateCode.generated.js" ../..
 
