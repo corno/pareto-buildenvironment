@@ -11,11 +11,14 @@ rootName=`basename $root`
 if [ -d "$rootDir/dev" ]
 then
     "$scriptDir/buildDevPackage.sh" && \
-    rm -rf "$rootDir/pub/src/generated" && \
-    rm -rf "$rootDir/test/src/generated" && \
     npx tsc -p "$rootDir/dev" && \
     node "$rootDir/dev/dist/bin/generateCode.generated.js" ../..
 fi && \
+
+
+"$scriptDir/buildParetpPackage.sh" && \
+npx tsc -p "$rootDir/pareto" && \
+node "$rootDir/pareto/dist/bin/generateCode.generated.js" ../..
 
 $scriptDir/buildPubAndTestPackages.sh && \
 if [[ $rootName == glo-* || $rootName == pareto-core-types ]]

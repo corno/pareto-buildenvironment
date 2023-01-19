@@ -4,7 +4,7 @@ rootDirOfProject="$1/.."
 
 echo "copying to $rootDirOfProject"
 dirOfThisScript=`realpath $(dirname "$0")`
-rm -rf $rootDirOfProject/pareto/scripts/*
+rm -rf $rootDirOfProject/build/scripts/*
 cp -R $dirOfThisScript/data/projectTemplate/. $rootDirOfProject \
 
 
@@ -13,6 +13,7 @@ root="`cd "$rootDirOfProject";pwd`" # the resolved path to the root dir of the p
 rootName=`basename $root`
 
 devDir="$rootDirOfProject/dev/"
+paretoDir="$rootDirOfProject/pareto/"
 pubDir="$rootDirOfProject/pub/"
 testDir="$rootDirOfProject/test/"
 
@@ -24,6 +25,15 @@ then
     npm --prefix "$devDir" install pareto-core-lib@latest
     npm --prefix "$devDir" install pareto-core-raw@latest
     npm --prefix "$devDir" install pareto-core-state@latest
+fi
+
+#pareto
+if [ -d $paretoDir ]
+then
+    npm --prefix "$paretoDir" install pareto-core-exe@latest
+    npm --prefix "$paretoDir" install pareto-core-lib@latest
+    npm --prefix "$paretoDir" install pareto-core-raw@latest
+    npm --prefix "$paretoDir" install pareto-core-state@latest
 fi
 
 
