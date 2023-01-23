@@ -15,6 +15,7 @@ then
     node "$rootDir/dev/dist/bin/generateCode.generated.js" ../..
 fi && \
 
+rm -rf "$rootDir/tmp/templates" && \
 
 "$scriptDir/buildParetoPackage.sh" && \
 npx tsc -p "$rootDir/pareto" && \
