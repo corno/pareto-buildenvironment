@@ -1,6 +1,6 @@
 {
   "name": "pareto-buildenvironment",
-  "version": "0.138.0",
+  "version": "0.139.0",
   "dependencies": {
     "npm-check-updates": "^16.0.5",
     "npm-safe-install": "^1.1.0",
