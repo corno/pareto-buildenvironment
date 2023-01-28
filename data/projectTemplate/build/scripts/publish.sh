@@ -14,17 +14,35 @@ git diff --exit-code && git log origin/master..master --exit-code && \
 
 "$scriptDir/clean.sh" && \
 
-#make sure latest packages are installed
-"$scriptDir/update2latestDependencies.sh" && \
+#update packages and build
+"$scriptDir/updatePackage.sh" dev && \
+"$scriptDir/updatePackage.sh" pareto && \
 
-#buildAndTest
-#"$scriptDir/buildAndTest.sh" && \ <- building is done by update2latestDependencies
+"$scriptDir/prebuild.sh" && \
+
+"$scriptDir/updatePackage.sh" pub && \
+"$scriptDir/updatePackage.sh" test && \
+
+"$scriptDir/buildPubAndTestPackages.sh" && \
+
+"$scriptDir/test.sh" && \
+
 
 #validate that everything is still committed after the update and build
 git diff --exit-code && git log origin/master..master --exit-code && \
 
 #bump version and store in variable
 pushd "$rootDir/pub" > /dev/null && \
+
+name=$(npm pkg get name | cut -c2- | rev | cut -c2- |rev) && \
+
+remoteVersion=$(npm view $name@latest version) && \
+
+npm pkg set version="$remoteVersion"
+
+remoteFingerprint=$(npm view $name@latest content-fingerprint) && \
+
+
 
 interfaceVersion=`npm pkg get interface-fingerprint` && \
 if [ $interfaceVersion == "{}" ]
@@ -34,7 +52,6 @@ then
     "$scriptDir/publishIfContentChanged.sh" "minor"
 
 else
-    name=$(npm pkg get name | cut -c2- | rev | cut -c2- |rev) && \
 
     localFingerprint=$(npm pkg get interface-fingerprint | cut -c2- | rev | cut -c2- |rev) && \
     remoteFingerprint=$(npm view $name@latest interface-fingerprint) && \
