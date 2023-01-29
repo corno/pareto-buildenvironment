@@ -6,6 +6,13 @@ rootDir="$scriptDir/../.."
 
 #bump version and store in variable
 pushd "$rootDir/pub" > /dev/null && \
+
+name=$(npm pkg get name | cut -c2- | rev | cut -c2- |rev) && \
+
+remoteVersion=$(npm view $name@latest version) && \
+
+npm pkg set version="$remoteVersion" && \
+
 newVersion=$(npm version "$generation") && \
 echo "version bumped: $generation" && \
 popd && \

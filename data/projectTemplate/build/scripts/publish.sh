@@ -32,7 +32,6 @@ if [ $interfaceVersion == "{}" ]
 then
     #no interface fingerprint
 
-    "$scriptDir/setVersion2LatestPublished.sh" && \
     "$scriptDir/publishIfContentChanged.sh" "minor"
 
 else
@@ -42,10 +41,8 @@ else
 
     if [ $localFingerprint != $remoteFingerprint ]
     then
-        "$scriptDir/setVersion2LatestPublished.sh" && \
         "$scriptDir/publishWithoutChecks.sh" "minor"
     else
-        "$scriptDir/setVersion2LatestPublished.sh" && \
         "$scriptDir/publishIfContentChanged.sh" "patch"
     fi
 fi
