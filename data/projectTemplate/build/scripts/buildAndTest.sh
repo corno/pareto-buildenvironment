@@ -5,7 +5,7 @@ rootDir="$scriptDir/../.."
 
 "$scriptDir/prebuild.sh" && \
 
-"$scriptDir/checkDependenciesUpdates.sh" && \
+"$scriptDir/checkDependencyUpdates.sh" && \
 
 "$scriptDir/buildPubAndTestPackages.sh" && \
 
