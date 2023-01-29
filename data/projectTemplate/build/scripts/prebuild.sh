@@ -19,4 +19,5 @@ rm -rf "$rootDir/tmp/templates" && \
 npx tsc -p "$rootDir/pareto" && \
 node "$rootDir/pareto/dist/bin/generateCode.generated.js" ../.. && \
 
-"$scriptDir/checkPackageUpdates.sh"
+"$scriptDir/checkPackageUpdates.sh" "pub" && \
+"$scriptDir/checkPackageUpdates.sh" "test"
