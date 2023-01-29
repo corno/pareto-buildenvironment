@@ -23,13 +23,7 @@ git diff --exit-code && git log origin/master..master --exit-code && \
 #bump version and store in variable
 pushd "$rootDir/pub" > /dev/null && \
 
-name=$(npm pkg get name | cut -c2- | rev | cut -c2- |rev) && \
-
-remoteVersion=$(npm view $name@latest version) && \
-
-echo ">>>>>>>>>$name>>>>>>>$remoteVersion"
-
-npm pkg set version="$remoteVersion"
+"$scriptDir/setVersion2LatestPublished.sh"
 
 remoteFingerprint=$(npm view $name@latest content-fingerprint) && \
 
