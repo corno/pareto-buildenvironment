@@ -15,18 +15,7 @@ git diff --exit-code && git log origin/master..master --exit-code && \
 "$scriptDir/clean.sh" && \
 
 #update packages and build
-"$scriptDir/updatePackage.sh" dev && \
-"$scriptDir/updatePackage.sh" pareto && \
-
-"$scriptDir/prebuild.sh" && \
-
-"$scriptDir/updatePackage.sh" pub && \
-"$scriptDir/updatePackage.sh" test && \
-
-"$scriptDir/buildPubAndTestPackages.sh" && \
-
-"$scriptDir/test.sh" && \
-
+"$scriptDir/update2latestDependenciesAndBuild.sh" && \
 
 #validate that everything is still committed after the update and build
 git diff --exit-code && git log origin/master..master --exit-code && \
@@ -37,6 +26,8 @@ pushd "$rootDir/pub" > /dev/null && \
 name=$(npm pkg get name | cut -c2- | rev | cut -c2- |rev) && \
 
 remoteVersion=$(npm view $name@latest version) && \
+
+echo ">>>>>>>>>$name>>>>>>>$remoteVersion"
 
 npm pkg set version="$remoteVersion"
 
