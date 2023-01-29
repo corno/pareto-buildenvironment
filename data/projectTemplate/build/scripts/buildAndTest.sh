@@ -5,7 +5,10 @@ rootDir="$scriptDir/../.."
 
 "$scriptDir/prebuild.sh" && \
 
-"$scriptDir/checkDependencyUpdates.sh" && \
+"$scriptDir/checkPackageUpdates.sh" dev && \
+"$scriptDir/checkPackageUpdates.sh" pareto && \
+"$scriptDir/checkPackageUpdates.sh" pub && \
+"$scriptDir/checkPackageUpdates.sh" test && \
 
 "$scriptDir/buildPubAndTestPackages.sh" && \
 
