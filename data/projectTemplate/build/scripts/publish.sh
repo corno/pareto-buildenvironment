@@ -20,16 +20,14 @@ git diff --exit-code && git log origin/master..master --exit-code && \
 #validate that everything is still committed after the update and build
 git diff --exit-code && git log origin/master..master --exit-code && \
 
+"$scriptDir/setVersion2LatestPublished.sh"
+
 #bump version and store in variable
 pushd "$rootDir/pub" > /dev/null && \
-
-"$scriptDir/setVersion2LatestPublished.sh"
 
 name=$(npm pkg get name | cut -c2- | rev | cut -c2- |rev) && \
 
 remoteFingerprint=$(npm view $name@latest content-fingerprint) && \
-
-
 
 interfaceVersion=`npm pkg get interface-fingerprint` && \
 if [ $interfaceVersion == "{}" ]
