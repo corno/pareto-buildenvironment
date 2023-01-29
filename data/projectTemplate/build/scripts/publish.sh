@@ -20,8 +20,6 @@ git diff --exit-code && git log origin/master..master --exit-code && \
 #validate that everything is still committed after the update and build
 git diff --exit-code && git log origin/master..master --exit-code && \
 
-"$scriptDir/setVersion2LatestPublished.sh"
-
 #bump version and store in variable
 pushd "$rootDir/pub" > /dev/null && \
 
@@ -34,6 +32,7 @@ if [ $interfaceVersion == "{}" ]
 then
     #no interface fingerprint
 
+    "$scriptDir/setVersion2LatestPublished.sh" && \
     "$scriptDir/publishIfContentChanged.sh" "minor"
 
 else
@@ -43,8 +42,10 @@ else
 
     if [ $localFingerprint != $remoteFingerprint ]
     then
+        "$scriptDir/setVersion2LatestPublished.sh" && \
         "$scriptDir/publishWithoutChecks.sh" "minor"
     else
+        "$scriptDir/setVersion2LatestPublished.sh" && \
         "$scriptDir/publishIfContentChanged.sh" "patch"
     fi
 fi
