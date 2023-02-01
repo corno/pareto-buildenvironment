@@ -3,7 +3,9 @@
 cd "../pub"
 
 
-name=$(npm pkg get name | cut -c2- | rev | cut -c2- |rev) 
+root="`cd "$rootDir";pwd`" # the resolved path to the root dir of the project
+name=`basename $root`
+
 localFingerprint=$(npm pkg get content-fingerprint | cut -c2- | rev | cut -c2- |rev)
 remoteFingerprint=$(npm view $name@latest content-fingerprint)
 

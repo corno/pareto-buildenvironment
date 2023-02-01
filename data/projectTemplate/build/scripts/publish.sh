@@ -23,7 +23,9 @@ git diff --exit-code && git log origin/master..master --exit-code && \
 #bump version and store in variable
 pushd "$rootDir/pub" > /dev/null && \
 
-name=$(npm pkg get name | cut -c2- | rev | cut -c2- |rev) && \
+
+root="`cd "$rootDir";pwd`" # the resolved path to the root dir of the project
+name=`basename $root`
 
 remoteFingerprint=$(npm view $name@latest content-fingerprint) && \
 

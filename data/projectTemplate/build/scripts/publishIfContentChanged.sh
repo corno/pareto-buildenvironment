@@ -8,11 +8,13 @@ rootDir="$scriptDir/../.."
 pushd "$rootDir/pub" > /dev/null && \
 
 localFingerprint=$(npm pkg get content-fingerprint | cut -c2- | rev | cut -c2- |rev) && \
-packageName=$(npm pkg get name | cut -c2- | rev | cut -c2- |rev) 
+
+root="`cd "$rootDir";pwd`" # the resolved path to the root dir of the project
+name=`basename $root`
 
 popd && \
 
-remoteFingerprint=$(npm view $packageName@latest content-fingerprint) && \
+remoteFingerprint=$(npm view $name@latest content-fingerprint) && \
 if [ $localFingerprint == $remoteFingerprint ]
 then
     echo "no changes detected, nothing is published"
