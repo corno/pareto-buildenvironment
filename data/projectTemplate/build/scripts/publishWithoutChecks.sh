@@ -8,6 +8,7 @@ root="`cd "$rootDir";pwd`" # the resolved path to the root dir of the project
 name=`basename $root`
 
 npm pkg set name="$name" && \
+npm pkg set repository.url="http://github.com/corno/$name" && \
 
 #bump version and store in variable
 pushd "$rootDir/pub" > /dev/null && \
