@@ -37,14 +37,14 @@ then
 
     npm pkg set name="x" && \
     npm pkg set version="0.0.0" && \
-    npm pkg delete content-fingerprint
+    npm pkg delete content-fingerprint && \
     npm pkg delete interface-fingerprint
 
     #create a package, but don't store it (--dry-run), let the summary output be json
     #create a shasum of that and then trim to the first 40 characters of that shasum (the rest is filename info, which in this case is: ' -')
     contentfingerprint=$(npm pack --dry-run --json | shasum | cut -c1-40)
 
-    npm pkg set content-fingerprint="$contentfingerprint" && \ #restore version
+    npm pkg set content-fingerprint="$contentfingerprint" && \
     npm pkg set version="$remoteVersion" && \
     npm pkg set name="$name" && \
     npm pkg set repository.url="http://github.com/corno/$name.git" && \
