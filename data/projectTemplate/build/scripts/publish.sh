@@ -35,7 +35,7 @@ then
 fi && \
 
 
-remoteContentFingerprint=$(npm view $name@latest content-fingerprint) && \
+#remoteContentFingerprint=$(npm view $name@latest content-fingerprint) && \
 
 rawLocalInterfaceFingerPrint=`npm pkg get interface-fingerprint` && \
 if [ $rawLocalInterfaceFingerPrint == "{}" ]

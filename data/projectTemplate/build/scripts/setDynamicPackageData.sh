@@ -12,16 +12,18 @@ remoteVersion=$(npm view $name@latest version) && \
 
 echo "$name $remoteVersion"
 
-pushd "$pubDir" > /dev/null && \
 
-#I want to have a fingerprint of the content of an npm package to be able to see if the local data is
-#identical to what was already published. If that is the case, there is nothing to publish
-#the version should not be part of that
-#if I publish the exact same package under 2 version numbers, the fingerprint should be the same
 
 if [ -d "$pubDir" ]
 then
-    
+    pushd "$pubDir" > /dev/null && \
+
+    #I want to have a fingerprint of the content of an npm package to be able to see if the local data is
+    #identical to what was already published. If that is the case, there is nothing to publish
+    #the version should not be part of that
+    #if I publish the exact same package under 2 version numbers, the fingerprint should be the same
+
+
     #first take care of the interface fingerprint
     # apiDir="./src/"
     # if [ -d "$apiDir" ]
@@ -36,17 +38,19 @@ then
     npm pkg set name="x" && \
     npm pkg set version="0.0.0" && \
     npm pkg delete content-fingerprint
+    npm pkg delete interface-fingerprint
 
     #create a package, but don't store it (--dry-run), let the summary output be json
     #create a shasum of that and then trim to the first 40 characters of that shasum (the rest is filename info, which in this case is: ' -')
     contentfingerprint=$(npm pack --dry-run --json | shasum | cut -c1-40)
 
-    npm pkg set content-fingerprint="$contentfingerprint" #restore version
+    npm pkg set content-fingerprint="$contentfingerprint" && \ #restore version
+    npm pkg set version="$remoteVersion" && \
+    npm pkg set name="$name" && \
+    npm pkg set repository.url="http://github.com/corno/$name.git" && \
 
+
+    popd > /dev/null
 fi
 
-npm pkg set version="$remoteVersion" && \
-npm pkg set name="$name" && \
-npm pkg set repository.url="http://github.com/corno/$name.git" && \
 
-popd > /dev/null
