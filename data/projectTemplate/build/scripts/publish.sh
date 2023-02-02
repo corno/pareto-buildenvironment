@@ -27,10 +27,12 @@ pushd "$rootDir/pub" > /dev/null && \
 root="`cd "$rootDir";pwd`" # the resolved path to the root dir of the project
 name=`basename $root`
 
-remoteFingerprint=$(npm view $name@latest content-fingerprint) && \
+"$scriptDir/setDynamicPackageData.sh" && \
 
-interfaceVersion=`npm pkg get interface-fingerprint` && \
-if [ $interfaceVersion == "{}" ]
+remoteContentFingerprint=$(npm view $name@latest content-fingerprint) && \
+
+rawLocalInterfaceFingerPrint=`npm pkg get interface-fingerprint` && \
+if [ $rawLocalInterfaceFingerPrint == "{}" ]
 then
     #no interface fingerprint
 
@@ -38,10 +40,10 @@ then
 
 else
 
-    localFingerprint=$(npm pkg get interface-fingerprint | cut -c2- | rev | cut -c2- |rev) && \
-    remoteFingerprint=$(npm view $name@latest interface-fingerprint) && \
+    localInterfaceFingerPrint=$($rawLocalInterfaceFingerPrint | cut -c2- | rev | cut -c2- |rev) && \
+    remoteInterfaceFingerprint=$(npm view $name@latest interface-fingerprint) && \
 
-    if [ $localFingerprint != $remoteFingerprint ]
+    if [ $localInterfaceFingerPrint != $remoteInterfaceFingerprint ]
     then
         "$scriptDir/publishWithoutChecks.sh" "minor"
     else

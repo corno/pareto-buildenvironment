@@ -4,8 +4,6 @@ generation=$1
 scriptDir=`realpath $(dirname "$0")`
 rootDir="$scriptDir/../.."
 
-"$scriptDir/setDynamicPackageData.sh" && \
-
 #bump version and store in variable
 newVersion=$(npm version "$generation") && \
 echo "version bumped: $generation" && \
