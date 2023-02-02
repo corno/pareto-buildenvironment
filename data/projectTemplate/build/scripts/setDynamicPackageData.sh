@@ -47,6 +47,6 @@ fi
 
 npm pkg set version="$remoteVersion" && \
 npm pkg set name="$name" && \
-npm pkg set repository.url="http://github.com/corno/$name" && \
+npm pkg set repository.url="http://github.com/corno/$name.git" && \
 
 popd > /dev/null
