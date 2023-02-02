@@ -1,9 +1,18 @@
 #!/usr/bin/env bash
+generation=$1
 
 scriptDir=`realpath $(dirname "$0")`
 rootDir="$scriptDir/../.."
-
 pubDir="$rootDir/pub"
+
+root="`cd "$rootDir";pwd`" # the resolved path to the root dir of the project
+name=`basename $root`
+
+remoteVersion=$(npm view $name@latest version) && \
+
+echo "$name $remoteVersion"
+
+pushd "$pubDir" > /dev/null && \
 
 #I want to have a fingerprint of the content of an npm package to be able to see if the local data is
 #identical to what was already published. If that is the case, there is nothing to publish
@@ -12,23 +21,20 @@ pubDir="$rootDir/pub"
 
 if [ -d "$pubDir" ]
 then
-    pushd "$pubDir" > /dev/null
     
     #first take care of the interface fingerprint
-    interfaceDir="./src/interface"
-    if [ -d "$interfaceDir" ]
-    then
-        npm pkg set interface-fingerprint=`tar -cf - $interfaceDir | shasum | cut -c1-40`
-    else
-        npm pkg delete interface-fingerprint #delete if it was there
-    fi
+    # apiDir="./src/"
+    # if [ -d "$apiDir" ]
+    # then
+    #     npm pkg set interface-fingerprint=`tar -cf - $apiDir | shasum | cut -c1-40`
+    # else
+    #     npm pkg delete interface-fingerprint #delete if it was there
+    # fi
 
-    #now take care of the content fingerp
+    #now take care of the content fingerprint
 
-    #get the version property from the package.json file
-    #then trim the quotes before and after
-
-    #the version property is mandatory for the 'npm pack' command, so I temporarily set it to '0.0.0'
+    npm pkg set name="x" && \
+    npm pkg set version="0.0.0" && \
     npm pkg delete content-fingerprint
 
     #create a package, but don't store it (--dry-run), let the summary output be json
@@ -37,5 +43,10 @@ then
 
     npm pkg set content-fingerprint="$contentfingerprint" #restore version
 
-    popd
 fi
+
+npm pkg set version="$remoteVersion" && \
+npm pkg set name="$name" && \
+npm pkg set repository.url="http://github.com/corno/$name" && \
+
+popd > /dev/null
