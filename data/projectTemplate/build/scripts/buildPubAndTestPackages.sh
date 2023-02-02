@@ -7,4 +7,4 @@ rootDir="$scriptDir/../.."
 $scriptDir/buildPackage.sh "$rootDir/pub" && \
 
 #test
-$scriptDir/buildPackage.sh "$rootDir/test" && \
+$scriptDir/buildPackage.sh "$rootDir/test"

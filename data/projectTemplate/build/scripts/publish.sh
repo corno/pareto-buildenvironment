@@ -29,6 +29,12 @@ name=`basename $root`
 
 "$scriptDir/setDynamicPackageData.sh" && \
 
+if [ -d "$rootDir/pub/src/bin" ]
+then
+    find "$rootDir/pub/src/bin/*" -name "*.js" -exec chmod 777 {} +
+fi && \
+
+
 remoteContentFingerprint=$(npm view $name@latest content-fingerprint) && \
 
 rawLocalInterfaceFingerPrint=`npm pkg get interface-fingerprint` && \
