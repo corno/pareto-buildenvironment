@@ -8,4 +8,4 @@ rootDir="$scriptDir/../.."
 
 "$scriptDir/prebuild.sh" && \
 
-"$scriptDir/buildAndTest.sh" && \
+"$scriptDir/buildAndTest.sh"

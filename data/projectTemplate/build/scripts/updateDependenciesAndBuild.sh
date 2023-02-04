@@ -6,4 +6,4 @@ rootDir="$scriptDir/../.."
 "$scriptDir/updatePackage.sh" pub && \
 "$scriptDir/updatePackage.sh" test && \
 
-"$scriptDir/buildAndTest.sh" && \
+"$scriptDir/buildAndTest.sh"

@@ -4,9 +4,6 @@
     "updatePrebuildDependencies": "./updatePrebuildDependenciesAndBuild.sh",
     "buildAndTest": "./buildAndTest.sh",
     "updateDependencies": "./updateDependenciesAndBuild.sh",
-    "analysePackage": "./analysePackage.sh",
-    "analyseTypeScript": "./analyseAllTypeScriptProjects.sh",
-    "pub is changed": "./isPackageChanged.sh",
     "publish": "./publish.sh"
   }
 }
