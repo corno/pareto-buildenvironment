@@ -1,8 +1,9 @@
 {
   "scripts": {
-    "update2latestBuildEnvironment": "./update2latestBuildEnvironment.sh",
-    "update-dependencies": "./update2latestDependenciesAndBuild.sh",
+    "updateBuildEnvironment": "./updateBuildEnvironment.sh",
+    "updatePrebuildDependencies": "./updatePrebuildDependenciesAndBuild.sh",
     "buildAndTest": "./buildAndTest.sh",
+    "updateDependencies": "./updateDependenciesAndBuild.sh",
     "analysePackage": "./analysePackage.sh",
     "analyseTypeScript": "./analyseAllTypeScriptProjects.sh",
     "pub is changed": "./isPackageChanged.sh",

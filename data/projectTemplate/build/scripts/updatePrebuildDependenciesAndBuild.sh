@@ -8,9 +8,4 @@ rootDir="$scriptDir/../.."
 
 "$scriptDir/prebuild.sh" && \
 
-"$scriptDir/updatePackage.sh" pub && \
-"$scriptDir/updatePackage.sh" test && \
-
-"$scriptDir/buildPubAndTestPackages.sh" && \
-
-"$scriptDir/test.sh"
+"$scriptDir/buildAndTest.sh" && \
