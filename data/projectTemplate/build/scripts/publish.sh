@@ -10,12 +10,14 @@ git push && \
 git diff --exit-code && git log origin/master..master --exit-code && \
 
 #make sure latest buildenvironment is installed
-"$scriptDir/update2latestBuildEnvironment.sh" && \
+"$scriptDir/updateBuildEnvironment.sh" && \
 
 "$scriptDir/clean.sh" && \
 
 #update packages and build
-"$scriptDir/update2latestDependenciesAndBuild.sh" && \
+"$scriptDir/updatePrebuildDependencies.sh" && \
+"$scriptDir/prebuild.sh" && \
+"$scriptDir/updateDependenciesAndBuild.sh" && \
 
 #validate that everything is still committed after the update and build
 git diff --exit-code && git log origin/master..master --exit-code && \

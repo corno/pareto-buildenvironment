@@ -3,9 +3,6 @@
 scriptDir=`realpath $(dirname "$0")`
 rootDir="$scriptDir/../.."
 
-"$scriptDir/updatePackage.sh" dev && \
-"$scriptDir/updatePackage.sh" pareto && \
-
+"$scriptDir/updatePrebuildDependencies.sh" && \
 "$scriptDir/prebuild.sh" && \
-
 "$scriptDir/buildAndTest.sh"
