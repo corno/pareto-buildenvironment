@@ -3,9 +3,11 @@
 scriptDir=`realpath $(dirname "$0")`
 rootDir="$scriptDir/../.."
 
+#this must be done before the clean command
+pushd "$rootDir/build" > /dev/null && \
+
 "$scriptDir/clean.sh" && \
 
-pushd "$rootDir/build" > /dev/null && \
 npm install && \
 "./initialize.sh" && \
 popd > /dev/null && \
