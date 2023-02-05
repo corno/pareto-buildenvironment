@@ -3,6 +3,9 @@
 scriptDir=`realpath $(dirname "$0")`
 rootDir="$scriptDir/../.."
 
+#the scriptsdir will be deleted, change to the root
+cd "$rootDir" && \
+
 #make sure everything is pushed
 git push && \
 
