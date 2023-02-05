@@ -2,8 +2,13 @@
 
 projectDir=$1
 
+scriptDir=`realpath $(dirname "$0")`
+buildDir="$scriptDir/.."
+
 if [ -d "$projectDir" ]
 then
     rm -rf "$projectDir/dist" && \
-    npx tsc -p "$projectDir"
+    pushd "$buildDir" > /dev/null && \
+    npx tsc -p "$projectDir" && \
+    popd > /dev/null
 fi
