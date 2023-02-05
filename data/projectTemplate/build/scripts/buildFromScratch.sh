@@ -12,10 +12,4 @@ npm install && \
 "./initialize.sh" && \
 popd > /dev/null && \
 
-#make sure latest buildenvironment is installed
-"$scriptDir/updateBuildEnvironment.sh" && \
-
-#update packages and build
-"$scriptDir/updatePrebuildDependencies.sh" && \
-"$scriptDir/prebuild.sh" && \
-"$scriptDir/updateDependenciesAndBuild.sh"
+"$scriptDir/updateAllAndBuild.sh"
