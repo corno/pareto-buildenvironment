@@ -4,6 +4,7 @@ scriptDir=`realpath $(dirname "$0")`
 rootDir="$scriptDir/../.."
 
 rm -rf $rootDir/.gitignore && \
+rm -rf $rootDir/tmp && \
 
 rm -rf $rootDir/dev/dist && \
 rm -rf $rootDir/dev/package-lock.json && \
