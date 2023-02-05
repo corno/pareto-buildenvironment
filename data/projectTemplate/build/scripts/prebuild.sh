@@ -6,7 +6,7 @@ buildDir="$scriptDir/.."
 
 if [ -d "$rootDir/dev" ]
 then
-    "$scriptDir/buildDevPackage.sh" && \  
+    "$scriptDir/buildDevPackage.sh" && \
     pushd "$buildDir" > /dev/null && \
     npx tsc -p "$rootDir/dev" && \
     popd > /dev/null && \
