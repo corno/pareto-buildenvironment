@@ -21,7 +21,7 @@ rm -rf $rootDir/pub/tsconfig.json && \
 pushd "$rootDir/pub" > /dev/null && \
 find ./src -name "index.ts" -exec rm {} \; && \
 find ./src -name "*.generated.ts" -exec rm {} \; && \
-popd "$rootDir/pub/src/" > /dev/null && \
+popd > /dev/null && \
 
 
 rm -rf $rootDir/test/dist && \
