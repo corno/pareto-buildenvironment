@@ -9,6 +9,7 @@ git push && \
 #validate that everything is committed and pushed (to make sure we're not messing with open work)
 git diff --exit-code && git log origin/master..master --exit-code && \
 
+echo "...building from scratch" && \
 "$scriptDir/buildFromScratch.sh" && \
 
 #validate that everything is still committed after the update and build
@@ -16,12 +17,15 @@ git diff --exit-code && git log origin/master..master --exit-code && \
 
 pushd "$rootDir/pub" > /dev/null && \
 
+echo "...setting dynamic package data" && \
 "$scriptDir/setDynamicPackageData.sh" && \
 
 if [ -d "$rootDir/pub/src/bin" ]
 then
     find "$rootDir/pub/src/bin/*" -name "*.js" -exec chmod 777 {} +
 fi && \
+
+echo "...determining scope of change" && \
 
 rawLocalInterfaceFingerPrint=`npm pkg get interface-fingerprint` && \
 if [ $rawLocalInterfaceFingerPrint == "{}" ]
