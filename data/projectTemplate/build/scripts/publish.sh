@@ -9,17 +9,7 @@ git push && \
 #validate that everything is committed and pushed (to make sure we're not messing with open work)
 git diff --exit-code && git log origin/master..master --exit-code && \
 
-"$scriptDir/clean.sh" && \
-
-#make sure latest buildenvironment is installed
-"$scriptDir/updateBuildEnvironment.sh" && \
-
-
-
-#update packages and build
-"$scriptDir/updatePrebuildDependencies.sh" && \
-"$scriptDir/prebuild.sh" && \
-"$scriptDir/updateDependenciesAndBuild.sh" && \
+"$scriptDir/buildFromScratch.sh" && \
 
 #validate that everything is still committed after the update and build
 git diff --exit-code && git log origin/master..master --exit-code && \
