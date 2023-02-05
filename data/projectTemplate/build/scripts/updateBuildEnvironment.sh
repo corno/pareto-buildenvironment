@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
 scriptsDir=`realpath $(dirname "$0")`
-paretoBuildEnvDir="$scriptsDir/.."
+buildDir="$scriptsDir/.."
 
 pushd "$buildDir" > /dev/null && \
-npx npm-check-updates -u --packageFile "$paretoBuildEnvDir/package.json" && \
-npx npm-safe-install -t "$paretoBuildEnvDir"
+npx npm-check-updates -u --packageFile "$buildDir/package.json" && \
+npx npm-safe-install -t "$buildDir"
 popd > /dev/null
 
-"$paretoBuildEnvDir/node_modules/pareto-buildenvironment/initialize.sh" "$paretoBuildEnvDir"
+"$buildDir/node_modules/pareto-buildenvironment/initialize.sh" "$buildDir"
