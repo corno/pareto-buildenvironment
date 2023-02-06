@@ -23,9 +23,11 @@ pushd "$rootDir/pub" > /dev/null && \
 echo "...setting dynamic package data" && \
 "$scriptDir/setDynamicPackageData.sh" && \
 
-if [ -d "$rootDir/pub/src/bin" ]
+if [ -d "$rootDir/pub/dist/bin" ]
 then
-    find "$rootDir/pub/src/bin/*" -name "*.js" -exec chmod 777 {} +
+    pushd "$rootDir" > /dev/null && \
+    find "./pub/dist/bin" -name "*.js" -exec chmod 777 {} + && \
+    popd > /dev/null
 fi && \
 
 echo "...determining scope of change" && \
