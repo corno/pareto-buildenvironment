@@ -19,7 +19,4 @@ rm -rf "$rootDir/tmp/templates" && \
 pushd "$buildDir" > /dev/null && \
 npx tsc -p "$rootDir/pareto" && \
 popd > /dev/null && \
-node "$rootDir/pareto/dist/bin/generateCode.generated.js" "$rootDir" && \
-
-"$scriptDir/checkPackageUpdates.sh" "pub" && \
-"$scriptDir/checkPackageUpdates.sh" "test"
+node "$rootDir/pareto/dist/bin/generateCode.generated.js" "$rootDir"
