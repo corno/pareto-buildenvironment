@@ -10,7 +10,7 @@ then
     pushd "$buildDir" > /dev/null && \
     npx tsc -p "$rootDir/dev" && \
     popd > /dev/null && \
-    node "$rootDir/dev/dist/bin/generateCode.generated.js" "$rootDir"
+    node --enable-source-maps "$rootDir/dev/dist/bin/generateCode.generated.js" "$rootDir"
 fi && \
 
 rm -rf "$rootDir/tmp/templates" && \
@@ -19,4 +19,4 @@ rm -rf "$rootDir/tmp/templates" && \
 pushd "$buildDir" > /dev/null && \
 npx tsc -p "$rootDir/pareto" && \
 popd > /dev/null && \
-node "$rootDir/pareto/dist/bin/generateCode.generated.js" "$rootDir"
+node --enable-source-maps "$rootDir/pareto/dist/bin/generateCode.generated.js" "$rootDir"
