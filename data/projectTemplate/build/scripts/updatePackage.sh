@@ -11,7 +11,7 @@ part="$rootDir/$projectType"
 if [ -d "$part" ]
 then    
     pushd "$buildDir" > /dev/null && \
-    npm outdated --json --prefix "$part" & \ #ignore the exitCode
+    # npm outdated --json --prefix "$part" & \ #ignore the exitCode
     npx npm-check-updates -u --packageFile "$part/package.json" && \
     npx npm-safe-install -t "$part/" && \
     popd > /dev/null
