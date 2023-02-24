@@ -9,7 +9,7 @@ pushd "$rootDir/build" > /dev/null && \
 "$scriptDir/clean.sh" && \
 
 npm install && \
-"./initialize.sh" && \
+"./initialize.sh"
 popd > /dev/null && \
 
 "$scriptDir/updateAllAndBuild.sh"

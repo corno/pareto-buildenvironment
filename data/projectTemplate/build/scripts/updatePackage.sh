@@ -13,6 +13,6 @@ then
     pushd "$buildDir" > /dev/null && \
     # npm outdated --json --prefix "$part" & \ #ignore the exitCode
     npx npm-check-updates -u --packageFile "$part/package.json" && \
-    npx npm-safe-install -t "$part/" && \
+    npm update --prefix "$part/" && \
     popd > /dev/null
 fi
