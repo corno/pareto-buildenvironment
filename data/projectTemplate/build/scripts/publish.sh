@@ -18,7 +18,6 @@ echo "...building from scratch" && \
 #validate that everything is still committed after the update and build
 git diff --exit-code && git log origin/master..master --exit-code && \
 
-pushd "$rootDir/pub" > /dev/null && \
 
 echo "...setting dynamic package data" && \
 "$scriptDir/setDynamicPackageData.sh" && \
