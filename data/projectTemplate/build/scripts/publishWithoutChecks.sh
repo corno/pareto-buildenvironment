@@ -13,6 +13,7 @@ echo "version bumped: $generation" && \
 popd > /dev/null && \
 
 #check for updates before committing, this alters the package-lock.json slightly
+echo "rootdir: $rootDir"
 npx npm-check-updates -u --packageFile "$rootDir/pub/package.json" && \
 
 #commit package.json with new version number
