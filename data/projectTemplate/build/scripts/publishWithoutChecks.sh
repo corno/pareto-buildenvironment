@@ -3,6 +3,7 @@ generation=$1
 
 scriptDir=`realpath $(dirname "$0")`
 rootDir="$scriptDir/../.."
+buildDir="$scriptDir/.."
 pubDir="$rootDir/pub"
 
 pushd "$rootDir/pub" > /dev/null && \
