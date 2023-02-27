@@ -8,7 +8,7 @@ pubDir="$rootDir/pub"
 pushd "$rootDir/pub" > /dev/null && \
 
 #bump version and store in variable
-newVersion=$(npm version "$generation" --prefix $pubDir/package.json) && \
+newVersion=$(npm version "$generation") && \
 echo "version bumped: $generation" && \
 
 popd > /dev/null && \

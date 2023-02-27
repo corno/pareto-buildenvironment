@@ -24,7 +24,9 @@ echo "...setting dynamic package data" && \
 
 echo "...determining scope of change" && \
 
-rawLocalInterfaceFingerPrint=`npm pkg get interface-fingerprint --prefix $rootDir/pub/package.json` && \
+pushd "$rootDir/pub" > /dev/null && \
+
+rawLocalInterfaceFingerPrint=`npm pkg get interface-fingerprint` && \
 if [ $rawLocalInterfaceFingerPrint == "{}" ]
 then
     #no interface fingerprint
@@ -34,7 +36,7 @@ then
 else
 
     localInterfaceFingerPrint=$($rawLocalInterfaceFingerPrint | cut -c2- | rev | cut -c2- |rev) && \
-    remoteInterfaceFingerprint=$(npm view $name@latest interface-fingerprint --prefix $rootDir/pub/package.json) && \
+    remoteInterfaceFingerprint=$(npm view $name@latest interface-fingerprint) && \
 
     if [ $localInterfaceFingerPrint != $remoteInterfaceFingerprint ]
     then
@@ -42,4 +44,5 @@ else
     else
         "$scriptDir/publishIfContentChanged.sh" "patch"
     fi
-fi
+fi && \
+popd > /dev/null

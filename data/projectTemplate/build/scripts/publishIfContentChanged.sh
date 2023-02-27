@@ -14,7 +14,7 @@ name=`basename $root`
 
 popd && \
 
-remoteFingerprint=$(npm view $name@latest content-fingerprint) && \
+remoteFingerprint=$(npm view $name@latest content-fingerprint) && \ #working dir doesn't matter for 'view'
 if [ $localFingerprint == $remoteFingerprint ]
 then
     echo "no changes detected, nothing is published"
