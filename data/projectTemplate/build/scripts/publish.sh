@@ -24,7 +24,7 @@ echo "...setting dynamic package data" && \
 
 echo "...determining scope of change" && \
 
-rawLocalInterfaceFingerPrint=`npm pkg get interface-fingerprint` && \
+rawLocalInterfaceFingerPrint=`npm pkg get interface-fingerprint --prefix $rootDir/pub/package.json` && \
 if [ $rawLocalInterfaceFingerPrint == "{}" ]
 then
     #no interface fingerprint
