@@ -34,7 +34,7 @@ then
 else
 
     localInterfaceFingerPrint=$($rawLocalInterfaceFingerPrint | cut -c2- | rev | cut -c2- |rev) && \
-    remoteInterfaceFingerprint=$(npm view $name@latest interface-fingerprint) && \
+    remoteInterfaceFingerprint=$(npm view $name@latest interface-fingerprint --prefix $rootDir/pub/package.json) && \
 
     if [ $localInterfaceFingerPrint != $remoteInterfaceFingerprint ]
     then
