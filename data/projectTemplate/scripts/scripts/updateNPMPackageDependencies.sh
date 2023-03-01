@@ -5,15 +5,14 @@ if [ -z "$1" ]
   then
     echo "No project type supplied"
 fi
-npmProjectPath=$1
+npmPackagePath=$1
 
 rootDir=`realpath "$scriptDir/../.."`
 buildDir=`realpath "$rootDir/scripts"`
 
 
-if [ -d "$part" ]
+if [ -d "$npmPackagePath" ]
 then    
-    # npm outdated --json --prefix "$part" & \ #ignore the exitCode
-    node "$buildDir/node_modules/npm-updatedependencies2latest/dist/index.js" "$npmProjectPath" && \
-    npm update --prefix $npmProjectPath
+    node "$buildDir/node_modules/npm-updatedependencies2latest/dist/index.js" "$npmPackagePath" && \
+    npm update --prefix $npmPackagePath
 fi
