@@ -17,7 +17,7 @@ part="$rootDir/$projectType"
 if [ -d "$part" ]
 then    
     # npm outdated --json --prefix "$part" & \ #ignore the exitCode
-    npm-check-updates -u --packageFile "$part/package.json" && \
+    "$buildDir/node_modules/npm-updatedependencies2latest/dist/index.js" "$part" && \
     pushd "$part" > /dev/null && \
     npm update && \
     popd > /dev/null

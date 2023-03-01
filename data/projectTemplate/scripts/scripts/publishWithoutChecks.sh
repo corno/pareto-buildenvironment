@@ -21,7 +21,7 @@ echo "version bumped: $generation" && \
 popd > /dev/null && \
 
 #check for updates before committing, this alters the package-lock.json slightly
-npm-check-updates -u --packageFile "$pubDir/package.json" && \
+"$scriptDir/updatePackage.sh" "$pubDir"
 
 #commit package.json with new version number
 git add $rootDir && \
