@@ -2,4 +2,4 @@
 
 paretoBuildEnvDir=`realpath $(dirname "$0")`
 
-"$paretoBuildEnvDir/node_modules/pareto-buildenvironment/initialize.sh" "$paretoBuildEnvDir/.."
+"$paretoBuildEnvDir/node_modules/pareto-buildenvironment/initializeProject.sh" "$paretoBuildEnvDir/.."
