@@ -8,5 +8,6 @@ rootDir="$scriptDir/../.."
 
 #update packages and build
 "$scriptDir/updatePrebuildDependencies.sh" && \
+"$scriptDir/updateParetoDependencies.sh" && \
 "$scriptDir/generateTypescript.sh" && \
 "$scriptDir/updateDependenciesAndBuild.sh"
