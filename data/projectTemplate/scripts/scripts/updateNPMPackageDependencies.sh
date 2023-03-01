@@ -13,7 +13,7 @@ buildDir="$rootDir/scripts"
 
 
 if [ -d "$npmPackagePath" ]
-then    
+then
     node "$buildDir/node_modules/npm-updatedependencies2latest/dist/index.js" "$npmPackagePath" verbose && \
     npm update --prefix $npmPackagePath
 fi
