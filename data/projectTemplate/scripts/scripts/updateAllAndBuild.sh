@@ -9,6 +9,6 @@ rootDir=`realpath "$scriptDir/../.."`
 
 #update packages and build
 "$scriptDir/updateNPMPackageDependencies.sh" "$rootDir/prebuild" && \
-"$scriptDir/updateNPMPackageDependencies.sh" "$rootDir/prebuild" && \
+"$scriptDir/updateNPMPackageDependencies.sh" "$rootDir/pareto" && \
 "$scriptDir/generateTypescript.sh" && \
 "$scriptDir/updateDependenciesAndBuild.sh"
