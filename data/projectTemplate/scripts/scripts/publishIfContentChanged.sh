@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+scriptDir=`realpath $(dirname "$0")`
 
 if [ -z "$1" ]
   then
@@ -7,20 +8,15 @@ fi
 
 generation=$1
 
-scriptDir=`realpath $(dirname "$0")`
-rootDir="$scriptDir/../.."
+rootDir=`realpath "$scriptDir/../.."`
+pubDir=$rootDir/typescript/pub
 
-pushd "$rootDir/typescript/pub" > /dev/null && \
+localFingerprint=$(npm pkg get content-fingerprint --prefix $pubDir | cut -c2- | rev | cut -c2- |rev) && \
 
-localFingerprint=$(npm pkg get content-fingerprint | cut -c2- | rev | cut -c2- |rev) && \
-
-root="`cd "$rootDir";pwd`" # the resolved path to the root dir of the project
-name=`basename $root`
-
-popd && \
+name=`basename $rootDir`
 
 #working dir doesn't matter for 'view'
-remoteFingerprint=$(npm view $name@latest content-fingerprint) && \
+remoteFingerprint=$(npm view $name@latest content-fingerprint --prefix $pubDir) && \
 if [ $localFingerprint == $remoteFingerprint ]
 then
     echo "no changes detected, nothing is published"

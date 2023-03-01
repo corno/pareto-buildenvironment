@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+scriptDir=`realpath $(dirname "$0")`
 
 if [ -z "$1" ]
   then
@@ -7,31 +8,24 @@ fi
 
 generation=$1
 
-scriptDir=`realpath $(dirname "$0")`
-rootDir="$scriptDir/../.."
-buildDir="$scriptDir/.."
+rootDir=`realpath "$scriptDir/../.."`
+buildDir="$rootDir/scripts"
 pubDir="$rootDir/typescript/pub"
 
-pushd "$rootDir/typescript/pub" > /dev/null && \
-
 #bump version and store in variable
-newVersion=$(npm version "$generation") && \
+newVersion=$(npm version "$generation" --prefix $pubDir) && \
 echo "version bumped: $generation" && \
 
-popd > /dev/null && \
-
 #check for updates before committing, this alters the package-lock.json slightly
-"$scriptDir/updatePackage.sh" "$pubDir"
+"$scriptDir/updateNPMProjectDependencies.sh" "$pubDir"
 
 #commit package.json with new version number
-git add $rootDir && \
-git commit -m "version bumped to $newVersion" && \
+git --git-dir $rootDir add . && \
+git --git-dir $rootDir commit -m "version bumped to $newVersion" && \
 
 #create a tag
-git tag -a "$newVersion" -m "$newVersion" && \
-git push && \
+git --git-dir $rootDir tag -a "$newVersion" -m "$newVersion" && \
+git --git-dir $rootDir push && \
 
 #publish
-pushd "$rootDir/typescript/pub" > /dev/null && \
-npm publish && \
-popd
+npm publish --prefix $pubDir && \

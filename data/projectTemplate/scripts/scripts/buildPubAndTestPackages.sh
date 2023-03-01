@@ -1,16 +1,15 @@
 #!/usr/bin/env bash
-
 scriptDir=`realpath $(dirname "$0")`
-rootDir="$scriptDir/../.."
+
+rootDir=`realpath "$scriptDir/../.."`
+pubDir="$scriptDir/typescript/pub"
 
 #pub
-$scriptDir/buildPackage.sh "$rootDir/typescript/pub" && \
+$scriptDir/buildPackage.sh "$pubDir" && \
 
-if [ -d "$rootDir/typescript/pub/dist/bin" ]
+if [ -d "$pubDir/dist/bin" ]
 then
-    pushd "$rootDir" > /dev/null && \
-    find "./typescript/pub/dist/bin" -name "*.js" -exec chmod 777 {} + && \
-    popd > /dev/null
+    find "$pubDir/dist/bin" -name "*.js" -exec chmod 777 {} +
 fi && \
 
 #test

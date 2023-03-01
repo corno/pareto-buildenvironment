@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+scriptDir=`realpath $(dirname "$0")`
 
 if [ -z "$1" ]
   then
@@ -7,11 +8,8 @@ fi
 
 generation=$1
 
-scriptDir=`realpath $(dirname "$0")`
-rootDir="$scriptDir/../.."
+rootDir=`realpath "$scriptDir/../.."`
 pubDir="$rootDir/typescript/pub"
-
-root="`cd "$rootDir";pwd`" # the resolved path to the root dir of the project
 
 if [ -d "$pubDir" ]
 then
@@ -34,25 +32,22 @@ then
 
     #now take care of the content fingerprint
 
-    npm pkg set name="x" && \
-    npm pkg set version="0.0.0" && \
-    npm pkg delete content-fingerprint && \
-    npm pkg delete interface-fingerprint
+    npm pkg set name="x" --prefix $pubDir && \
+    npm pkg set version="0.0.0" --prefix $pubDir && \
+    npm pkg delete content-fingerprint --prefix $pubDir && \
+    npm pkg delete interface-fingerprint --prefix $pubDir
     #create a package, but don't store it (--dry-run), let the summary output be json
     #create a shasum of that and then trim to the first 40 characters of that shasum (the rest is filename info, which in this case is: ' -')
-    contentfingerprint=$(npm pack --dry-run --json | shasum | cut -c1-40)
-    npm pkg set content-fingerprint="$contentfingerprint" && \
+    contentfingerprint=$(npm pack --dry-run --json --prefix $pubDir | shasum | cut -c1-40)
+    npm pkg set content-fingerprint="$contentfingerprint" --prefix $pubDir && \
 
-    name=`basename $root` && \
-    npm pkg set name="$name" && \
-    npm pkg set repository.url="http://github.com/corno/$name.git" && \
+    name=`basename $rootDir` && \
+    npm pkg set name="$name" --prefix $pubDir && \
+    npm pkg set repository.url="http://github.com/corno/$name.git" --prefix $pubDir && \
 
-    remoteVersion=$(npm view $name@latest version) && \
+    remoteVersion=$(npm view $name@latest version --prefix $pubDir) && \
 
-    npm pkg set version="$remoteVersion" && \
-
-
-    popd > /dev/null
+    npm pkg set version="$remoteVersion" --prefix $pubDir && \
 fi
 
 

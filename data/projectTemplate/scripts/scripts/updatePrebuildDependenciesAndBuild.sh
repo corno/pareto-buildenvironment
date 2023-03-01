@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
-
 scriptDir=`realpath $(dirname "$0")`
-rootDir="$scriptDir/../.."
 
-"$scriptDir/updatePrebuildDependencies.sh" && \
-"$scriptDir/generateTypescript.sh" && \
+rootDir=`realpath "$scriptDir/../.."`
+
+"$scriptDir/updateNPMProjectDependencies.sh" $rootDir/prebuild && \
 "$scriptDir/buildAndTest.sh"

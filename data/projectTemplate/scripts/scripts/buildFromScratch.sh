@@ -1,15 +1,10 @@
 #!/usr/bin/env bash
-
 scriptDir=`realpath $(dirname "$0")`
-rootDir="$scriptDir/../.."
 
-#this must be done before the clean command
-pushd "$rootDir/scripts" > /dev/null && \
+rootDir=`realpath "$scriptDir/../.."`
+buildDir=`realpath "$rootDir/scripts"`
 
 "$scriptDir/clean.sh" && \
-
-npm install && \
-"./initialize.sh"
-popd > /dev/null && \
-
+npm install --prefix "$buildDir" && \
+"$buildDir/initialize.sh" && \
 "$scriptDir/updateAllAndBuild.sh"

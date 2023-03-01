@@ -1,22 +1,19 @@
 #!/usr/bin/env bash
-
 scriptDir=`realpath $(dirname "$0")`
-rootDir="$scriptDir/../.."
 
-#the scriptsdir will be deleted, change to the root
-cd "$rootDir" && \
+rootDir=`realpath "$scriptDir/../.."`
 
 #make sure everything is pushed
 git push && \
 
 #validate that everything is committed and pushed (to make sure we're not messing with open work)
-git diff --exit-code && git log origin/master..master --exit-code && \
+git "--git-dir $rootDir diff --exit-code && git log origin/master..master --exit-code" && \
 
 echo "...building from scratch" && \
 "$scriptDir/buildFromScratch.sh" && \
 
 #validate that everything is still committed after the update and build
-git diff --exit-code && git log origin/master..master --exit-code && \
+git "--git-dir $rootDir diff --exit-code && git log origin/master..master --exit-code" && \
 
 
 echo "...setting dynamic package data" && \
@@ -24,9 +21,7 @@ echo "...setting dynamic package data" && \
 
 echo "...determining scope of change" && \
 
-pushd "$rootDir/typescript/pub" > /dev/null && \
-
-rawLocalInterfaceFingerPrint=`npm pkg get interface-fingerprint` && \
+rawLocalInterfaceFingerPrint=`npm pkg get interface-fingerprint --prefix $rootDir/typescript/pub` && \
 if [ $rawLocalInterfaceFingerPrint == "{}" ]
 then
     #no interface fingerprint
@@ -36,7 +31,7 @@ then
 else
 
     localInterfaceFingerPrint=$($rawLocalInterfaceFingerPrint | cut -c2- | rev | cut -c2- |rev) && \
-    remoteInterfaceFingerprint=$(npm view $name@latest interface-fingerprint) && \
+    remoteInterfaceFingerprint=$(npm view $name@latest interface-fingerprint --prefix $rootDir/typescript/pub) && \
 
     if [ $localInterfaceFingerPrint != $remoteInterfaceFingerprint ]
     then

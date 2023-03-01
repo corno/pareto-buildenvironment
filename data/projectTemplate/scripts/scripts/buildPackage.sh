@@ -1,19 +1,18 @@
 #!/usr/bin/env bash
+scriptDir=`realpath $(dirname "$0")`
 
 if [ -z "$1" ]
   then
     echo "No path supplied"
+    exit 1
 fi
 
 projectDir=$1
 
-scriptDir=`realpath $(dirname "$0")`
-buildDir="$scriptDir/.."
+rootDir=`realpath "$scriptDir/../.."`
 
 if [ -d "$projectDir" ]
 then
     rm -rf "$projectDir/dist" && \
-    pushd "$buildDir" > /dev/null && \
-    npx tsc -p "$projectDir" && \
-    popd > /dev/null
+    npm exec --prefix "$buildDir" -- tsc -p "$projectDir"
 fi

@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
-
 scriptDir=`realpath $(dirname "$0")`
-rootDir="$scriptDir/../.."
 
 #make sure latest buildenvironment is installed
 "$scriptDir/updateScripts.sh" && \

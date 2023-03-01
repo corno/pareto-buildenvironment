@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
-
 scriptDir=`realpath $(dirname "$0")`
-rootDir="$scriptDir/../.."
 
-"$scriptDir/updateParetoDependencies.sh" && \
-"$scriptDir/generateTypescript.sh" && \
+rootDir=`realpath "$scriptDir/../.."`
+
+"$scriptDir/updateNPMProjectDependencies.sh" $rootDir/pareto && \
 "$scriptDir/buildAndTest.sh"

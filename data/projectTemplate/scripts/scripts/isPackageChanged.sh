@@ -1,17 +1,13 @@
 #!/usr/bin/env bash
 
 scriptDir=`realpath $(dirname "$0")`
-rootDir="$scriptDir/../.."
+rootDir=`realpath "$scriptDir/../.."`
+pubDir=`realpath "$rootDir/typescript/pub"`
 
-root="`cd "$rootDir";pwd`" # the resolved path to the root dir of the project
-name=`basename $root`
+name=`basename $rootDir`
 
-pushd "$rootDir/typescript/pub" > /dev/null && \
-
-localFingerprint=$(npm pkg get content-fingerprint | cut -c2- | rev | cut -c2- |rev) && \
-remoteFingerprint=$(npm view $name@latest content-fingerprint) && \
-
-popd > /dev/null
+localFingerprint=$(npm pkg get content-fingerprint --prefix $pubDir | cut -c2- | rev | cut -c2- |rev) && \
+remoteFingerprint=$(npm view $name@latest content-fingerprint --prefix $pubDir) && \
 
 if [ $localFingerprint != $remoteFingerprint ]
 then

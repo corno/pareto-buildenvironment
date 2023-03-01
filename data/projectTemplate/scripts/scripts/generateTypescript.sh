@@ -1,22 +1,19 @@
 #!/usr/bin/env bash
-
 scriptDir=`realpath $(dirname "$0")`
-rootDir=`realpath "$scriptDir/../.."`
-buildDir="$scriptDir/.."
 
-if [ -d "$rootDir/prebuild" ]
+rootDir=`realpath "$scriptDir/../.."`
+buildDir="$rootDir/scripts"
+prebuildDir="$rootDir/prebuild"
+
+if [ -d $prebuildDir ]
 then
-    "$scriptDir/buildPrebuildPackage.sh" && \
-    pushd "$buildDir" > /dev/null && \
-    npx tsc -p "$rootDir/prebuild" && \
-    popd > /dev/null && \
+    "$scriptDir/buildPackage.sh" "$prebuildDir" && \
+    npm exec --prefix $buildDir -- tsc -p "$rootDir/prebuild" && \
     node --enable-source-maps "$rootDir/prebuild/dist/bin/generateCode.generated.js" "$rootDir"
 fi && \
 
 rm -rf "$rootDir/tmp/templates" && \
 
-"$scriptDir/buildParetoPackage.sh" && \
-pushd "$buildDir" > /dev/null && \
-npx tsc -p "$rootDir/pareto" && \
-popd > /dev/null && \
+"$scriptDir/buildPackage.sh" "$rootDir/pareto" && \
+npm exec --prefix $buildDir -- tsc -p "$rootDir/pareto" && \
 node --enable-source-maps "$rootDir/pareto/dist/bin/generateCode.generated.js" "$rootDir"
