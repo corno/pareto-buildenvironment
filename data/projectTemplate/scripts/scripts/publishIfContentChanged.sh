@@ -20,5 +20,5 @@ if [ $localFingerprint == $remoteFingerprint ]
 then
     echo "no changes detected, nothing is published"
 else
-    $scriptDir/typescript/publishWithoutChecks.sh $generation
+    $scriptDir/publishWithoutChecks.sh $generation
 fi

@@ -3,7 +3,7 @@
 scriptDir=`realpath $(dirname "$0")`
 rootDir="$scriptDir/../.."
 
-"$scriptDir/prebuild.sh" && \
+"$scriptDir/generateTypescript.sh" && \
 
 "$scriptDir/buildPubAndTestPackages.sh" && \
 

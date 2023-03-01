@@ -31,7 +31,7 @@ if [ $rawLocalInterfaceFingerPrint == "{}" ]
 then
     #no interface fingerprint
 
-    "$scriptDir/typescript/publishIfContentChanged.sh" "minor"
+    "$scriptDir/publishIfContentChanged.sh" "minor"
 
 else
 
@@ -40,9 +40,9 @@ else
 
     if [ $localInterfaceFingerPrint != $remoteInterfaceFingerprint ]
     then
-        "$scriptDir/typescript/publishWithoutChecks.sh" "minor"
+        "$scriptDir/publishWithoutChecks.sh" "minor"
     else
-        "$scriptDir/typescript/publishIfContentChanged.sh" "patch"
+        "$scriptDir/publishIfContentChanged.sh" "patch"
     fi
 fi && \
 popd > /dev/null

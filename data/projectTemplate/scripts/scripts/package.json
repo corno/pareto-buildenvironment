@@ -1,9 +1,10 @@
 {
   "scripts": {
     "updateBuildEnvironment": "./updateBuildEnvironment.sh",
-    "updatePrebuildDependencies": "./updatePrebuildDependenciesAndBuild.sh",
+    "updatePrebuildDependencies": "./updatePrebuildAndParetoDependenciesAndBuild.sh",
+    "updateParetoDependencies": "./updateParetoDependenciesAndBuild.sh",
     "buildAndTest": "./buildAndTest.sh",
     "updateDependencies": "./updateDependenciesAndBuild.sh",
-    "publish": "./typescript/publish.sh"
+    "publish": "./publish.sh"
   }
 }

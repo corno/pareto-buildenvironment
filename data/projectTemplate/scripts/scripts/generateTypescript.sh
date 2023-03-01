@@ -6,7 +6,7 @@ buildDir="$scriptDir/.."
 
 if [ -d "$rootDir/prebuild" ]
 then
-    "$scriptDir/buildDevPackage.sh" && \
+    "$scriptDir/buildPrebuildPackage.sh" && \
     pushd "$buildDir" > /dev/null && \
     npx tsc -p "$rootDir/prebuild" && \
     popd > /dev/null && \
