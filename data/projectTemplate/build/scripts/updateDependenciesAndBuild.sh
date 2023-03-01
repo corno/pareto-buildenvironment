@@ -3,8 +3,8 @@
 scriptDir=`realpath $(dirname "$0")`
 rootDir="$scriptDir/../.."
 
-"$scriptDir/updatePackage.sh" pub && \
-"$scriptDir/updatePackage.sh" test && \
+"$scriptDir/updatePackage.sh" typescript/test && \
+"$scriptDir/updatePackage.sh" typescript/test && \
 
 "$scriptDir/buildPubAndTestPackages.sh" && \
 

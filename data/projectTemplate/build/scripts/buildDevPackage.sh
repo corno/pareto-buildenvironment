@@ -3,4 +3,4 @@
 scriptDir=`realpath $(dirname "$0")`
 rootDir="$scriptDir/../.."
 
-"$scriptDir/buildPackage.sh" "$(pwd)/../dev"
+"$scriptDir/buildPackage.sh" "$rootDir/prebuild"

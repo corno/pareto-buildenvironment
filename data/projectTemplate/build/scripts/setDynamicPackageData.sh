@@ -3,7 +3,7 @@ generation=$1
 
 scriptDir=`realpath $(dirname "$0")`
 rootDir="$scriptDir/../.."
-pubDir="$rootDir/pub"
+pubDir="$rootDir/typescript/pub"
 
 root="`cd "$rootDir";pwd`" # the resolved path to the root dir of the project
 

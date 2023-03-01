@@ -5,7 +5,7 @@ generation=$1
 scriptDir=`realpath $(dirname "$0")`
 rootDir="$scriptDir/../.."
 
-pushd "$rootDir/pub" > /dev/null && \
+pushd "$rootDir/typescript/pub" > /dev/null && \
 
 localFingerprint=$(npm pkg get content-fingerprint | cut -c2- | rev | cut -c2- |rev) && \
 
@@ -20,5 +20,5 @@ if [ $localFingerprint == $remoteFingerprint ]
 then
     echo "no changes detected, nothing is published"
 else
-    $scriptDir/publishWithoutChecks.sh $generation
+    $scriptDir/typescript/publishWithoutChecks.sh $generation
 fi

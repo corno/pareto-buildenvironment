@@ -4,9 +4,9 @@ generation=$1
 scriptDir=`realpath $(dirname "$0")`
 rootDir="$scriptDir/../.."
 buildDir="$scriptDir/.."
-pubDir="$rootDir/pub"
+pubDir="$rootDir/typescript/pub"
 
-pushd "$rootDir/pub" > /dev/null && \
+pushd "$rootDir/typescript/pub" > /dev/null && \
 
 #bump version and store in variable
 newVersion=$(npm version "$generation") && \
@@ -26,6 +26,6 @@ git tag -a "$newVersion" -m "$newVersion" && \
 git push && \
 
 #publish
-pushd "$rootDir/pub" > /dev/null && \
+pushd "$rootDir/typescript/pub" > /dev/null && \
 npm publish && \
 popd

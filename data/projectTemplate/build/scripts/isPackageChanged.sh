@@ -6,7 +6,7 @@ rootDir="$scriptDir/../.."
 root="`cd "$rootDir";pwd`" # the resolved path to the root dir of the project
 name=`basename $root`
 
-pushd "$rootDir/pub" > /dev/null && \
+pushd "$rootDir/typescript/pub" > /dev/null && \
 
 localFingerprint=$(npm pkg get content-fingerprint | cut -c2- | rev | cut -c2- |rev) && \
 remoteFingerprint=$(npm view $name@latest content-fingerprint) && \

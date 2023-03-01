@@ -24,14 +24,14 @@ echo "...setting dynamic package data" && \
 
 echo "...determining scope of change" && \
 
-pushd "$rootDir/pub" > /dev/null && \
+pushd "$rootDir/typescript/pub" > /dev/null && \
 
 rawLocalInterfaceFingerPrint=`npm pkg get interface-fingerprint` && \
 if [ $rawLocalInterfaceFingerPrint == "{}" ]
 then
     #no interface fingerprint
 
-    "$scriptDir/publishIfContentChanged.sh" "minor"
+    "$scriptDir/typescript/publishIfContentChanged.sh" "minor"
 
 else
 
@@ -40,9 +40,9 @@ else
 
     if [ $localInterfaceFingerPrint != $remoteInterfaceFingerprint ]
     then
-        "$scriptDir/publishWithoutChecks.sh" "minor"
+        "$scriptDir/typescript/publishWithoutChecks.sh" "minor"
     else
-        "$scriptDir/publishIfContentChanged.sh" "patch"
+        "$scriptDir/typescript/publishIfContentChanged.sh" "patch"
     fi
 fi && \
 popd > /dev/null

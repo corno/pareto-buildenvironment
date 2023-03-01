@@ -4,6 +4,6 @@
     "updatePrebuildDependencies": "./updatePrebuildDependenciesAndBuild.sh",
     "buildAndTest": "./buildAndTest.sh",
     "updateDependencies": "./updateDependenciesAndBuild.sh",
-    "publish": "./publish.sh"
+    "publish": "./typescript/publish.sh"
   }
 }

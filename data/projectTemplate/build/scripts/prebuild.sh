@@ -4,13 +4,13 @@ scriptDir=`realpath $(dirname "$0")`
 rootDir="$scriptDir/../.."
 buildDir="$scriptDir/.."
 
-if [ -d "$rootDir/dev" ]
+if [ -d "$rootDir/prebuild" ]
 then
     "$scriptDir/buildDevPackage.sh" && \
     pushd "$buildDir" > /dev/null && \
-    npx tsc -p "$rootDir/dev" && \
+    npx tsc -p "$rootDir/prebuild" && \
     popd > /dev/null && \
-    node --enable-source-maps "$rootDir/dev/dist/bin/generateCode.generated.js" "$rootDir"
+    node --enable-source-maps "$rootDir/prebuild/dist/bin/generateCode.generated.js" "$rootDir"
 fi && \
 
 rm -rf "$rootDir/tmp/templates" && \
