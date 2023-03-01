@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 scriptDir=`realpath $(dirname "$0")`
-rootDir="$scriptDir/../.."
+rootDir=`realpath "$scriptDir/../.."`
 buildDir="$scriptDir/.."
 
 if [ -d "$rootDir/prebuild" ]
