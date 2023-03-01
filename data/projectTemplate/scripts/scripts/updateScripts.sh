@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-scriptsDir=`realpath $(dirname "$0")`
+scriptDir=`realpath $(dirname "$0")`
 
 rootDir=`realpath "$scriptDir/../.."`
 buildDir="$rootDir/scripts"
