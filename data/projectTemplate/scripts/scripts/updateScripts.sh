@@ -3,7 +3,7 @@
 scriptsDir=`realpath $(dirname "$0")`
 buildDir="$scriptsDir/.."
 
-npm-check-updates -u --packageFile "$buildDir/package.json" && \
+node "$buildDir/node_modules/npm-updatedependencies2latest/dist/index.js" "$buildDir" && \
 npm update
 
 "$buildDir/node_modules/pareto-buildenvironment/initialize.sh" "$buildDir"
