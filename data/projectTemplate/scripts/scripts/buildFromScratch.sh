@@ -2,7 +2,7 @@
 scriptDir=`realpath $(dirname "$0")`
 
 rootDir=`realpath "$scriptDir/../.."`
-buildDir=`realpath "$rootDir/scripts"`
+buildDir="$rootDir/scripts"
 
 "$scriptDir/clean.sh" && \
 npm install --prefix "$buildDir" && \

@@ -10,6 +10,7 @@ fi
 projectDir=$1
 
 rootDir=`realpath "$scriptDir/../.."`
+buildDir="$rootDir/scripts"
 
 if [ -d "$projectDir" ]
 then

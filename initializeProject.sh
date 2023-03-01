@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
+scriptDir=`realpath $(dirname "$0")`
 
 if [ -z "$1" ]
   then
     echo "No path to root of project supplied"
+    exit 1
 fi
 
 rootDirOfProject=`realpath "$1"`
 
 echo "copying to $rootDirOfProject"
-dirOfThisScript=`realpath $(dirname "$0")`
 rm -rf $rootDirOfProject/scripts/scripts/*
-echo "cp -RT $dirOfThisScript/data/projectTemplate $rootDirOfProject"
-cp -RT $dirOfThisScript/data/projectTemplate $rootDirOfProject
+cp -RT $scriptDir/data/projectTemplate $rootDirOfProject

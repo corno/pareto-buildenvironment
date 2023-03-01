@@ -3,12 +3,13 @@ scriptDir=`realpath $(dirname "$0")`
 
 if [ -z "$1" ]
   then
-    echo "No project type supplied"
+    echo "No npm package path supplied"
+    exit 1
 fi
 npmPackagePath=$1
 
 rootDir=`realpath "$scriptDir/../.."`
-buildDir=`realpath "$rootDir/scripts"`
+buildDir="$rootDir/scripts"
 
 
 if [ -d "$npmPackagePath" ]

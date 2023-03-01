@@ -3,7 +3,6 @@ scriptDir=`realpath $(dirname "$0")`
 
 rootDir=`realpath "$scriptDir/../.."`
 
-
 #make sure latest buildenvironment is installed
 "$scriptDir/updateScripts.sh" && \
 
