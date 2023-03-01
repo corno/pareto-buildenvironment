@@ -2,7 +2,7 @@
 scriptDir=`realpath $(dirname "$0")`
 
 rootDir=`realpath "$scriptDir/../.."`
-pubDir="$scriptDir/typescript/pub"
+pubDir="$rootDir/typescript/pub"
 
 #pub
 $scriptDir/buildPackage.sh "$pubDir" && \
