@@ -3,9 +3,6 @@
 scriptDir=`realpath $(dirname "$0")`
 rootDir=`realpath "$scriptDir/../.."`
 
-echo "REENABLE!!!!!!!!!!!!!!!!!!!"
-exit 1
-
 rm -rf "$rootDir/.gitignore" && \
 rm -rf "$rootDir/tmp" && \
 
