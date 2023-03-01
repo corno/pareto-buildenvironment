@@ -1,11 +1,14 @@
 #!/usr/bin/env bash
 scriptDir=`realpath $(dirname "$0")`
 
+rootDir=`realpath "$scriptDir/../.."`
+
+
 #make sure latest buildenvironment is installed
 "$scriptDir/updateScripts.sh" && \
 
 #update packages and build
-"$scriptDir/updatePrebuildDependencies.sh" && \
-"$scriptDir/updateParetoDependencies.sh" && \
+"$scriptDir/updateNPMPackageDependencies.sh" "$rootDir/prebuild" && \
+"$scriptDir/updateNPMPackageDependencies.sh" "$rootDir/prebuild" && \
 "$scriptDir/generateTypescript.sh" && \
 "$scriptDir/updateDependenciesAndBuild.sh"
