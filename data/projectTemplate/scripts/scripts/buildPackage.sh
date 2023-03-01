@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+if [ -z "$1" ]
+  then
+    echo "No path supplied"
+fi
+
 projectDir=$1
 
 scriptDir=`realpath $(dirname "$0")`

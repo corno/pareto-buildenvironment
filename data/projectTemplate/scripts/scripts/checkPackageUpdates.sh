@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+if [ -z "$1" ]
+  then
+    echo "No project type supplied"
+fi
+
 projectType=$1
 
 scriptDir=`realpath $(dirname "$0")`

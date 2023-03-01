@@ -12,4 +12,5 @@ dirOfThisScript=`realpath $(dirname "$0")`
 rm -rf $rootDirOfProject/scripts/scripts/*
 echo "this script: $dirOfThisScript"
 echo "root: $rootDirOfProject"
-cp -R $dirOfThisScript/data/projectTemplate/. $rootDirOfProject \
+echo "cp -R $dirOfThisScript/data/projectTemplate/. $rootDirOfProject"
+cp -R $dirOfThisScript/data/projectTemplate/. $rootDirOfProject

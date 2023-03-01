@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+if [ -z "$1" ]
+  then
+    echo "No generation supplied"
+fi
+
 generation=$1
 
 scriptDir=`realpath $(dirname "$0")`
