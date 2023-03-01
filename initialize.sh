@@ -5,7 +5,7 @@ if [ -z "$1" ]
     echo "No path to root of project supplied"
 fi
 
-rootDirOfProject=`realpath $("$1")`
+rootDirOfProject=`realpath "$1"`
 
 echo "copying to $rootDirOfProject"
 dirOfThisScript=`realpath $(dirname "$0")`
