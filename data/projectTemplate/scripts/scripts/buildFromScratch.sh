@@ -5,6 +5,6 @@ rootDir=`realpath "$scriptDir/../.."`
 buildDir="$rootDir/scripts"
 
 "$scriptDir/clean.sh" && \
-npm install --prefix "$buildDir" && \
+npm install pareto-buildenvironment --prefix "$buildDir" && \
 "$buildDir/initialize.sh" && \
 "$scriptDir/updateAllAndBuild.sh"

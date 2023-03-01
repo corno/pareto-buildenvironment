@@ -30,4 +30,5 @@ rm -rf "$rootDir/typescript/pub/tsconfig.json" && \
 
 rm -rf "$rootDir/scripts/node_modules" && \
 rm -rf "$rootDir/scripts/package-lock.json" && \
+rm -rf "$rootDir/scripts/package.json" && \
 rm -rf "$rootDir/scripts/scripts"
