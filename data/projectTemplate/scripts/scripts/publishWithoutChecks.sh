@@ -17,7 +17,7 @@ newVersion=$(npm version "$generation" --prefix $pubDir) && \
 echo "version bumped: $generation" && \
 
 #check for updates before committing, this alters the package-lock.json slightly
-"$scriptDir/updateNPMProjectDependencies.sh" "$pubDir"
+"$scriptDir/updateNPMPackageDependencies.sh" "$pubDir"
 
 #commit package.json with new version number
 git --git-dir $rootDir add . && \
