@@ -9,15 +9,15 @@ fi
 projectType=$1
 
 scriptDir=`realpath $(dirname "$0")`
-rootDir="$scriptDir/../.."
-buildDir="$scriptDir/.."
+rootDir=`realpath "$scriptDir/../.."`
+buildDir=`realpath "$scriptDir/.."`
 
 part="$rootDir/$projectType"
 
 if [ -d "$part" ]
 then    
     # npm outdated --json --prefix "$part" & \ #ignore the exitCode
-    "$buildDir/node_modules/npm-updatedependencies2latest/dist/index.js" "$part" && \
+    node "$buildDir/node_modules/npm-updatedependencies2latest/dist/index.js" "$part" && \
     pushd "$part" > /dev/null && \
     npm update && \
     popd > /dev/null
