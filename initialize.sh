@@ -13,4 +13,4 @@ rm -rf $rootDirOfProject/scripts/scripts/*
 echo "this script: $dirOfThisScript"
 echo "root: $rootDirOfProject"
 echo "cp -R $dirOfThisScript/data/projectTemplate/. $rootDirOfProject"
-cp -R $dirOfThisScript/data/projectTemplate/. $rootDirOfProject
+cp -RT $dirOfThisScript/data/projectTemplate/. $rootDirOfProject
