@@ -5,12 +5,9 @@ if [ -z "$1" ]
     echo "No path to root of project supplied"
 fi
 
-rootDirOfProject="$1"
+rootDirOfProject=`realpath("$1")`
 
 echo "copying to $rootDirOfProject"
 dirOfThisScript=`realpath $(dirname "$0")`
 rm -rf $rootDirOfProject/scripts/scripts/*
-echo "this script: $dirOfThisScript"
-echo "root: $rootDirOfProject"
-echo "cp -R $dirOfThisScript/data/projectTemplate/. $rootDirOfProject"
 cp -RT $dirOfThisScript/data/projectTemplate/. $rootDirOfProject
