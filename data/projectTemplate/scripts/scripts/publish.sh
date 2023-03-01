@@ -39,5 +39,4 @@ else
     else
         "$scriptDir/publishIfContentChanged.sh" "patch"
     fi
-fi && \
-popd > /dev/null
+fi

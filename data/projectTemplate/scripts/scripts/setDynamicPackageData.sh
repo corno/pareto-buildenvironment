@@ -14,7 +14,6 @@ pubDir="$rootDir/typescript/pub"
 
 if [ -d "$pubDir" ]
 then
-    pushd "$pubDir" > /dev/null && \
 
     #I want to have a fingerprint of the content of an npm package to be able to see if the local data is
     #identical to what was already published. If that is the case, there is nothing to publish
