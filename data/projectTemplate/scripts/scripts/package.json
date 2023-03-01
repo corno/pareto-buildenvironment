@@ -1,7 +1,7 @@
 {
   "scripts": {
-    "updateBuildEnvironment": "./updateBuildEnvironment.sh",
-    "updatePrebuildDependencies": "./updatePrebuildAndParetoDependenciesAndBuild.sh",
+    "updateScripts": "./updateScripts.sh",
+    "updatePrebuildDependencies": "./updatePrebuildDependenciesAndBuild.sh",
     "updateParetoDependencies": "./updateParetoDependenciesAndBuild.sh",
     "buildAndTest": "./buildAndTest.sh",
     "updateDependencies": "./updateDependenciesAndBuild.sh",
