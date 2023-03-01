@@ -31,6 +31,6 @@ rm -rf $rootDir/typescript/pub/package.json && \
 rm -rf $rootDir/typescript/pub/package-lock.json && \
 rm -rf $rootDir/typescript/pub/tsconfig.json && \
 
-rm -rf $rootDir/build/node_modules && \
-rm -rf $rootDir/build/package-lock.json && \
-rm -rf $rootDir/build/scripts
+rm -rf $rootDir/scripts/node_modules && \
+rm -rf $rootDir/scripts/package-lock.json && \
+rm -rf $rootDir/scripts/scripts

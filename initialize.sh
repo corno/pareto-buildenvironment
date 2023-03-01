@@ -4,5 +4,5 @@ rootDirOfProject="$1/.."
 
 echo "copying to $rootDirOfProject"
 dirOfThisScript=`realpath $(dirname "$0")`
-rm -rf $rootDirOfProject/build/scripts/*
+rm -rf $rootDirOfProject/scripts/scripts/*
 cp -R $dirOfThisScript/data/projectTemplate/. $rootDirOfProject \
