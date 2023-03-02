@@ -3,10 +3,6 @@
 scriptDir=`realpath $(dirname "$0")`
 rootDir=`realpath "$scriptDir/../.."`
 
-#change to a directory that will not be deleted
-cd $rootDir && \
-pushd $rootDir && \
-
 rm -rf "$rootDir/.gitignore" && \
 rm -rf "$rootDir/tmp" && \
 
@@ -35,4 +31,4 @@ rm -rf "$rootDir/typescript/pub/tsconfig.json" && \
 rm -rf "$rootDir/scripts/node_modules" && \
 rm -rf "$rootDir/scripts/package-lock.json" && \
 rm -rf "$rootDir/scripts/package.json" && \
-rm -rf "$rootDir/scripts/scripts"
+rm -rf "$rootDir/scripts/scripts/*"
