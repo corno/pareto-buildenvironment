@@ -12,4 +12,4 @@ rootDirOfProject=`realpath "$1"`
 echo "copying to $rootDirOfProject"
 rm -rf $rootDirOfProject/scripts/scripts/*
 cp -RT $scriptDir/data/projectTemplate $rootDirOfProject
-cp -RT $scriptDir/data/gitignore $rootDirOfProject/.gitignore
+cp $scriptDir/data/gitignore $rootDirOfProject/.gitignore
