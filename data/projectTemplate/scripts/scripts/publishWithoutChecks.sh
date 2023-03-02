@@ -21,12 +21,12 @@ echo "version bumped: $generation" && \
 "$scriptDir/updateNPMPackageDependencies.sh" "$pubDir"
 
 #commit package.json with new version number
-git --git-dir $rootDir add . && \
-git --git-dir $rootDir commit -m "version bumped to $newVersion" && \
+git --git-dir=$rootDir add . && \
+git --git-dir=$rootDir commit -m "version bumped to $newVersion" && \
 
 #create a tag
-git --git-dir $rootDir tag -a "$newVersion" -m "$newVersion" && \
-git --git-dir $rootDir push && \
+git --git-dir=$rootDir tag -a "$newVersion" -m "$newVersion" && \
+git --git-dir=$rootDir push && \
 
 #publish
 npm publish --prefix $pubDir && \
