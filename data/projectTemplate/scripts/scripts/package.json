@@ -1,10 +1,10 @@
 {
   "scripts": {
     "updateScripts": "./updateScripts.sh",
-    "updatePrebuildDependencies": "./updatePrebuildDependenciesAndBuild.sh",
-    "updateParetoDependencies": "./updateParetoDependenciesAndBuild.sh",
+    "updatePrebuild": "./updatePrebuildAndBuild.sh",
+    "updateParetoCompiler": "./updateParetoCompilerAndBuild.sh",
     "buildAndTest": "./buildAndTest.sh",
-    "updateDependencies": "./updateDependenciesAndBuild.sh",
+    "updateTypescriptDependencies": "./updateTypescriptDependenciesAndBuild.sh",
     "publish": "./publish.sh"
   }
 }
