@@ -4,7 +4,8 @@ scriptDir=`realpath $(dirname "$0")`
 rootDir=`realpath "$scriptDir/../.."`
 
 #change to a directory that will not be deleted
-cd $rootDir
+cd $rootDir && \
+pushd $rootDir && \
 
 rm -rf "$rootDir/.gitignore" && \
 rm -rf "$rootDir/tmp" && \
