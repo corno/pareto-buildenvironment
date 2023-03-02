@@ -29,4 +29,4 @@ git tag -a "$newVersion" -m "$newVersion" && \
 git push && \
 
 #publish
-npm publish --prefix $pubDir && \
+npm publish --prefix $pubDir

@@ -39,7 +39,7 @@ then
 
     remoteVersion=$(npm view $name@latest version --prefix $pubDir) && \
 
-    npm pkg set version="$remoteVersion" --prefix $pubDir && \
+    npm pkg set version="$remoteVersion" --prefix $pubDir
 fi
 
 
