@@ -1,14 +1,6 @@
 #!/usr/bin/env bash
 scriptDir=`realpath $(dirname "$0")`
 
-if [ -z "$1" ]
-  then
-    echo "No generation supplied"
-    exit 1
-fi
-
-generation=$1
-
 rootDir=`realpath "$scriptDir/../.."`
 pubDir="$rootDir/typescript/pub"
 
