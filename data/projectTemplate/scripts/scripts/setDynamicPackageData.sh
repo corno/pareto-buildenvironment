@@ -30,7 +30,7 @@ then
     npm pkg delete interface-fingerprint --prefix $pubDir
     #create a package, but don't store it (--dry-run), let the summary output be json
     #create a shasum of that and then trim to the first 40 characters of that shasum (the rest is filename info, which in this case is: ' -')
-    contentfingerprint=$(npm pack --dry-run --json --prefix $pubDir | shasum | cut -c1-40)
+    contentfingerprint=$(npm pack $pubDir --dry-run --json | shasum | cut -c1-40)
     npm pkg set content-fingerprint="$contentfingerprint" --prefix $pubDir && \
 
     name=`basename $rootDir` && \
