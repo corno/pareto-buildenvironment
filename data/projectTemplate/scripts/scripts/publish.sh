@@ -4,16 +4,16 @@ scriptDir=`realpath $(dirname "$0")`
 rootDir=`realpath "$scriptDir/../.."`
 
 #make sure everything is pushed
-git push && \
+git "push" && \
 
 #validate that everything is committed and pushed (to make sure we're not messing with open work)
-git "--git-dir=$rootDir diff --exit-code && git log origin/master..master --exit-code" && \
+git "diff --exit-code && git log origin/master..master --exit-code" && \
 
 echo "...building from scratch" && \
 "$scriptDir/buildFromScratch.sh" && \
 
 #validate that everything is still committed after the update and build
-git "--git-dir=$rootDir diff --exit-code && git log origin/master..master --exit-code" && \
+git "diff --exit-code && git log origin/master..master --exit-code" && \
 
 
 echo "...setting dynamic package data" && \
