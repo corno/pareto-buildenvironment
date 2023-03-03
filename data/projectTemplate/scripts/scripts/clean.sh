@@ -32,4 +32,4 @@ rm -rf "$rootDir/typescript/test/package.json" && \
 rm -rf "$rootDir/typescript/test/package-lock.json" && \
 
 find "$rootDir/typescript" -name "index.ts" -exec rm {} \; && \
-find "$rootDir/typescript" -name "*.generated.ts" -exec rm {} \; && \;
+find "$rootDir/typescript" -name "*.generated.ts" -exec rm {} \;
