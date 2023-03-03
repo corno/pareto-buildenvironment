@@ -17,6 +17,9 @@ pubDir="$rootDir/typescript/pub"
 newVersion=$(npm version "$generation" --prefix $pubDir) && \
 echo "version bumped: $generation" && \
 
+#update the dependencies, this alters the package-lock.json slightly
+"$scriptDir/updateNPMPackageDependencies.sh" "$pubDir" && \
+
 #commit package.json with new version number
 git add --all && \
 git commit -m "version bumped to $newVersion" && \
@@ -26,7 +29,4 @@ git tag -a "$newVersion" -m "$newVersion" && \
 git push && \
 
 #publish
-npm publish $pubDir && \
-
-#update the dependencies, this alters the package-lock.json slightly
-"$scriptDir/updateNPMPackageDependencies.sh" "$pubDir"
+npm publish $pubDir
