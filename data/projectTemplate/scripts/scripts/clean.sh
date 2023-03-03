@@ -25,12 +25,11 @@ rm -rf "$rootDir/typescript/pub/node_modules" && \
 rm -rf "$rootDir/typescript/pub/package.json" && \
 rm -rf "$rootDir/typescript/pub/package-lock.json" && \
 rm -rf "$rootDir/typescript/pub/tsconfig.json" && \
-find "$rootDir/typescript/pub/src" -name "index.ts" -exec rm {} \; && \
-find "$rootDir/typescript/pub/src" -name "*.generated.ts" -exec rm {} \; && \
 
 rm -rf "$rootDir/typescript/test/dist" && \
 rm -rf "$rootDir/typescript/test/node_modules" && \
 rm -rf "$rootDir/typescript/test/package.json" && \
 rm -rf "$rootDir/typescript/test/package-lock.json" && \
-rm -rf "$rootDir/typescript/test/tsconfig.json" && \
-find "$rootDir/typescript/test/src" -name "*.generated.ts" -exec rm {} \;
+
+find "$rootDir/typescript" -name "index.ts" -exec rm {} \; && \
+find "$rootDir/typescript" -name "*.generated.ts" -exec rm {} \; && \;
