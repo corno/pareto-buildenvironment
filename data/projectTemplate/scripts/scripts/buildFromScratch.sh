@@ -6,5 +6,5 @@ buildDir="$rootDir/scripts"
 
 "$scriptDir/clean.sh" && \
 npm install pareto-buildenvironment --prefix "$buildDir" && \
-"$buildDir/initialize.sh" && \
+"$buildDir/node_modules/pareto-buildenvironment/initializeProject.sh $rootDir" && \
 "$scriptDir/updateAllAndBuild.sh"

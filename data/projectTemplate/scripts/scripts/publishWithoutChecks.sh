@@ -26,7 +26,7 @@ git tag -a "$newVersion" -m "$newVersion" && \
 git push && \
 
 #publish
-npm publish --prefix $pubDir && \
+npm publish $pubDir && \
 
 #update the dependencies, this alters the package-lock.json slightly
 "$scriptDir/updateNPMPackageDependencies.sh" "$pubDir"
