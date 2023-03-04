@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 scriptDir=`realpath $(dirname "$0")`
 
-if [ -z "$1" ] then
+if [ -z "$1" ]
+then
     echo "No generation supplied"
     exit 1
 fi
