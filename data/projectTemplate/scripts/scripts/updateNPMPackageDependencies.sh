@@ -2,7 +2,7 @@
 scriptDir=`realpath $(dirname "$0")`
 
 if [ -z "$1" ]
-  then
+then
     echo "No npm package path supplied"
     exit 1
 fi
