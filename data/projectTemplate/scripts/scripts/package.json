@@ -1,5 +1,6 @@
 {
   "scripts": {
+    "buildFromScratch": "./buildFromScratch.sh",
     "updateScripts": "./updateScripts.sh",
     "updatePrebuild": "./updatePrebuildAndBuild.sh",
     "updateParetoCompiler": "./updateParetoCompilerAndBuild.sh",
