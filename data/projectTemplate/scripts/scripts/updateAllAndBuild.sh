@@ -8,6 +8,7 @@ rootDir=`realpath "$scriptDir/../.."`
 
 #update packages and build
 "$scriptDir/updateNPMPackageDependencies.sh" "$rootDir/prebuild" && \
+"$scriptDir/initializePareto.sh"
 "$scriptDir/updateNPMPackageDependencies.sh" "$rootDir/pareto" && \
 "$scriptDir/generateTypescript.sh" && \
 "$scriptDir/updateTypescriptDependenciesAndBuild.sh"
