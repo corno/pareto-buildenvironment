@@ -6,6 +6,8 @@ scriptDir=`realpath $(dirname "$0")`
 #assure it's currenly succesfully building and testing
 "$scriptDir/buildAndTest.sh" && \
 
+"$scriptDir/assertNoOpenGitChanges.sh" && \
+
 #rebuild with latest dependencies
 "$scriptDir/buildFromScratch.sh" && \
 
