@@ -11,6 +11,6 @@ scriptDir=`realpath $(dirname "$0")`
 #rebuild with latest dependencies
 "$scriptDir/buildFromScratch.sh" && \
 
-git add -a && git commit -m "." && git push && \
+git add -A && git commit -m "." && git push && \
 
 "$scriptDir/publish.sh"
