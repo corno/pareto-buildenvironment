@@ -26,7 +26,17 @@ git commit -m "version bumped to $newVersion" && \
 
 #create a tag
 git tag -a "$newVersion" -m "$newVersion" && \
+
 git push && \
 
 #publish
-npm publish $pubDir
+npm publish $pubDir && \
+
+#post process 
+npm install --package-lock-only --prefix $pubDir
+
+git add --all && \
+git commit -m "version erased" && \
+
+git push && \
+
