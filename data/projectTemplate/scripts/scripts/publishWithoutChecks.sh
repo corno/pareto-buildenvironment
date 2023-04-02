@@ -33,6 +33,8 @@ git push && \
 npm publish $pubDir && \
 
 #post process 
+
+"$scriptDir/generateTypescript.sh"
 npm install --package-lock-only --prefix $pubDir
 
 git add --all && \
