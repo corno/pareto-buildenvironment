@@ -38,5 +38,4 @@ npm install --package-lock-only --prefix $pubDir
 git add --all && \
 git commit -m "version erased" && \
 
-git push && \
-
+git push
