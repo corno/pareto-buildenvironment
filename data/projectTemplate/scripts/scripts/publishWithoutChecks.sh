@@ -30,14 +30,14 @@ git tag -a "$newVersion" -m "$newVersion" && \
 git push && \
 
 #publish
-npm publish $pubDir && \
+npm publish $pubDir #&& \
 
-#post process 
+# #post process 
 
-"$scriptDir/generateTypescript.sh"
-npm install --package-lock-only --prefix $pubDir
+# "$scriptDir/generateTypescript.sh"
+# npm install --package-lock-only --prefix $pubDir
 
-git add --all && \
-git commit -m "version erased" && \
+# git add --all && \
+# git commit -m "version erased" && \
 
-git push
+# git push
