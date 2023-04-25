@@ -22,6 +22,7 @@ echo "...setting dynamic package data" && \
 echo "...determining scope of change" && \
 
 rawLocalInterfaceFingerPrint=`npm pkg get interface-fingerprint --prefix $rootDir/typescript/pub` && \
+
 if [ $rawLocalInterfaceFingerPrint == "{}" ]
 then
     #no interface fingerprint

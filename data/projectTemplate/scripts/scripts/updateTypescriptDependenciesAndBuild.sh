@@ -3,6 +3,8 @@ scriptDir=`realpath $(dirname "$0")`
 
 rootDir=`realpath "$scriptDir/../.."`
 
+"$scriptDir/setDynamicPackageData.sh" && \
+
 "$scriptDir/updateNPMPackageDependencies.sh" "$rootDir/typescript/pub" && \
 "$scriptDir/updateNPMPackageDependencies.sh" "$rootDir/typescript/test" && \
 
