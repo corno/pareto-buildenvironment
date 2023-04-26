@@ -3,7 +3,9 @@ scriptDir=`realpath $(dirname "$0")`
 
 rootDir=`realpath "$scriptDir/../.."`
 
-"$scriptDir/setDynamicPackageData.sh" && \
+
+name=`basename $rootDir` && \
+npm pkg set name="$name" --prefix $rootDir/typescript/pub && \
 
 "$scriptDir/updateNPMPackageDependencies.sh" "$rootDir/typescript/pub" && \
 "$scriptDir/updateNPMPackageDependencies.sh" "$rootDir/typescript/test" && \

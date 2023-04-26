@@ -15,6 +15,9 @@ echo "...building from scratch" && \
 #validate that everything is still committed after the update and build
 "$scriptDir/assertNoOpenGitChanges.sh" && \
 
+echo "...setting dynamic package data" && \
+"$scriptDir/setDynamicPackageData.sh" && \
+
 echo "...determining scope of change" && \
 
 rawLocalInterfaceFingerPrint=`npm pkg get interface-fingerprint --prefix $rootDir/typescript/pub` && \
