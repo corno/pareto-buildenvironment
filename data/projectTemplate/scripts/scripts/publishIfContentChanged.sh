@@ -18,6 +18,7 @@ name=`basename $rootDir`
 
 #working dir doesn't matter for 'view'
 remoteFingerprint=$(npm view $name@latest content-fingerprint --prefix $pubDir) && \
+
 if [ $localFingerprint == $remoteFingerprint ]
 then
     echo "no changes detected, nothing is published"
