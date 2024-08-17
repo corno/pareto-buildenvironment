@@ -2,10 +2,12 @@
   "name": "pareto-buildenvironment",
   "version": "0.315.0",
   "dependencies": {
-    "npm-updatedependencies2latest": "^0.0.10",
-    "typescript": "^5.0.2"
+    "npm-updatedependencies2latest": "^0.0.17",
+    "typescript": "^5.5.4"
   },
   "scripts": {
+    "update2latest": "node ./node_modules/npm-updatedependencies2latest/dist/index.js . dependencies",
+    "version minor": "npm version minor",
     "publish x": "npm version minor && git push && npm publish"
   }
 }
