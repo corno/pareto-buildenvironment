@@ -1,6 +1,6 @@
 {
   "name": "pareto-buildenvironment",
-  "version": "0.319.1",
+  "version": "0.320.0",
   "dependencies": {
     "npm-updatedependencies2latest": "^0.0.18",
     "typescript": "^5.5.4"
