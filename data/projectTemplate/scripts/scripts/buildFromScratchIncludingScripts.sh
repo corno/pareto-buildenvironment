@@ -4,7 +4,7 @@ scriptDir=`realpath $(dirname "$0")`
 rootDir=`realpath "$scriptDir/../.."`
 buildDir="$rootDir/scripts"
 
-"$scriptDir/cleanExceptScripts.sh" && \
+"$scriptDir/cleanIncludingScripts.sh" && \
 npm install pareto-buildenvironment --prefix "$buildDir" && \
 "$buildDir/initialize.sh" && \
 #"$buildDir/node_modules/pareto-buildenvironment/initializeProject.sh $rootDir" && \

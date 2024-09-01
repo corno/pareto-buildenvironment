@@ -6,11 +6,6 @@ rootDir=`realpath "$scriptDir/../.."`
 rm -rf "$rootDir/.gitignore" && \
 rm -rf "$rootDir/tmp" && \
 
-rm -rf "$rootDir/scripts/node_modules" && \
-rm -rf "$rootDir/scripts/package-lock.json" && \
-rm -rf "$rootDir/scripts/package.json" && \
-rm -rf "$rootDir/scripts/scripts/*" && \
-
 rm -rf "$rootDir/prebuild/dist" && \
 rm -rf "$rootDir/prebuild/package-lock.json" && \
 rm -rf "$rootDir/prebuild/node_modules" && \
