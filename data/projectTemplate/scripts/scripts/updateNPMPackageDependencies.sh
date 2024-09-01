@@ -14,7 +14,7 @@ buildDir="$rootDir/scripts"
 
 if [ -d "$npmPackagePath" ]
 then
-    node "$buildDir/node_modules/npm-updatedependencies2latest/dist/index.js" "$npmPackagePath" "dependencies" && \
+    npx "$buildDir/node_modules/npm-updatedependencies2latest/dist/index.js" "$npmPackagePath" "dependencies" && \
     node "$buildDir/node_modules/npm-updatedependencies2latest/dist/index.js" "$npmPackagePath" "devDependencies" && \
     npm update --prefix $npmPackagePath
 fi

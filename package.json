@@ -6,7 +6,7 @@
     "typescript": "^5.5.4"
   },
   "scripts": {
-    "update2latest": "node ./node_modules/npm-updatedependencies2latest/dist/index.js . dependencies",
+    "update2latest": "npx update2latest . dependencies",
     "version minor": "npm version minor",
     "publish x": "npm version minor && git push && npm publish"
   }

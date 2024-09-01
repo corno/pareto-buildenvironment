@@ -3,5 +3,5 @@
 paretoBuildEnvDir=`realpath $(dirname "$0")`
 
 npm install && \
-node ./node_modules/npm-updatedependencies2latest/dist/index.js . dependencies && \
+npx update2latest . dependencies && \
 "$paretoBuildEnvDir/node_modules/pareto-buildenvironment/initializeProject.sh" "$paretoBuildEnvDir/.."

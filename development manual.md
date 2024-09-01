@@ -2,7 +2,7 @@
 
 run from the root dir:
 ```
-node ./node_modules/npm-updatedependencies2latest/dist . dependencies
+npx update2latest . dependencies
 ```
 
 # Publishing
