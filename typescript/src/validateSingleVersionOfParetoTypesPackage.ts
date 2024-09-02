@@ -77,11 +77,12 @@ cp.exec(
 
             type Dependent = {
                 name: string
+                version: string
                 from: Entry
             }
 
             type Entry = {
-                name: string
+                //name: string
                 version: string
                 dependents?: [Dependent]
             }
@@ -104,7 +105,7 @@ cp.exec(
 
                         function loop ($: Dependent) {
                             if ($.from.dependents === undefined) {
-                                console.error(` ${$.name}`)
+                                console.error(` ${$.name} (${$.version})`)
                             } else {
                                 $.from.dependents.forEach(($) => {
                                     loop($)

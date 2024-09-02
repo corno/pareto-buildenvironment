@@ -3,7 +3,7 @@
     "target": "ES2015",
     "module": "commonjs",
     "declaration": true,
-    "outDir": "../data/projectTemplate/scripts",
+    "outDir": "../data/projectTemplate/scripts/scripts",
     "rootDir": "./src",
     "strict": true,
     "esModuleInterop": true,
