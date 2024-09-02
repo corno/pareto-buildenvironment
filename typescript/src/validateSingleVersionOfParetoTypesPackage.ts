@@ -87,25 +87,38 @@ cp.exec(
                 dependents?: [Dependent]
             }
 
-            type Result = [Entry]
+            type RawResult = [Entry]
 
-            const result: Result = JSON.parse(stdout)
-            if (result.length === 1) {
-                console.log(`success: there are only dependencies to 1 version of ${referencePackage}`)
+            /**
+             * the outer key is the version of the reference package
+             * the inner key is the combination of name and version of the dependent package
+             */
+            type Result = { [key: string]: { [key: string]: null } }
+
+            const rawResult: RawResult = JSON.parse(stdout)
+            if (rawResult.length === 1) {
+                if (beVerbose) {
+                    console.log(`success: all dependencies use the same version of ${referencePackage}`)
+                }
 
             } else {
-                console.error(`there are dependecies to multiple versions of ${referencePackage}`)
-                result.forEach(($) => {
+                console.error(`there are dependecies on multiple versions of ${referencePackage}`)
+
+                const result: Result = {}
+                rawResult.forEach(($) => {
                     if ($.dependents === undefined) {
                         console.error(`unexpected data: no dependents`)
                         process.exit(1)
                     }
-                    console.error($.version)
+                    if (result[$.version] === undefined) {
+                        result[$.version] = {}
+                    }
+                    const current = result[$.version]
                     $.dependents.forEach(($) => {
 
-                        function loop ($: Dependent) {
+                        function loop($: Dependent) {
                             if ($.from.dependents === undefined) {
-                                console.error(` ${$.name} (${$.spec})`)
+                                current[` ${$.name} (${$.spec})`] = null
                             } else {
                                 $.from.dependents.forEach(($) => {
                                     loop($)
@@ -115,53 +128,16 @@ cp.exec(
                         loop($)
                     })
                 })
+                Object.keys(result).forEach(($) => {
+                    console.error($)
+                    const entry = result[$]
+                    Object.keys(entry).forEach(($) => {
+                        console.error(` $`)
+                    })
+
+                })
 
             }
-            // if (dependencies.length === 0) {
-            //     if (beVerbose) {
-            //         console.log("-no dependencies-")
-            //     }
-            // } else {
-            //     const versions: [string, string][] = []
-
-            //     function push(key: string, version: string) {
-            //         versions.push([key, version])
-            //         /*
-            //         every version check is an asynchronous process, so with every result we need to check
-            //         if all versions are processed, if so, do the final step
-            //          */
-            //         if (versions.length === dependencies.length) {
-            //             cp.exec(`npm pkg set ${versions.map(($) => `${dependencyType}.${$[0]}="^${$[1]}"`).join(" ")} --prefix ${contextDir}`, (err, stdout, stderr) => {
-            //                 /*
-            //                 updates the version numbers in the package.json file
-            //                 */
-            //                 if (beVerbose) {
-            //                     versions.forEach(($) => {
-            //                         console.log(`${$[0]}:${$[1]}`)
-            //                     })
-            //                 }
-            //                 if (err !== null) {
-            //                     console.error(`could not set dependency versions: ${stderr}`);
-            //                     process.exit(1);
-            //                 }
-            //             });
-
-            //         }
-            //     }
-            //     dependencies.forEach((key) => {
-            //         cp.exec(`npm view ${key}@latest version`, (err, stdout, stderr) => {
-            //             /*
-            //             gets the latest version from the online database
-            //             */
-            //             if (err !== null) {
-            //                 console.error(`could not retrieve latest version: ${stderr}`);
-            //                 process.exit(1);
-            //             } else {
-            //                 push(key, stdout.trimEnd())
-            //             }
-            //         });
-            //     })
-            // }
         }
     }
 )
