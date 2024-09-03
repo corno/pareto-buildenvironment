@@ -57,7 +57,7 @@ cp.exec(
             if (stderr.indexOf("No dependencies found") !== -1) {
                 //nothing to do
                 if (beVerbose) {
-                    console.log(`there are not dependencies on ${referencePackage}`)
+                    console.log(`there are no dependencies on ${referencePackage}`)
                 }
             } else {
                 console.error(`${stderr}`)
@@ -89,21 +89,24 @@ cp.exec(
 
             type RawResult = [Entry]
 
-            /**
-             * the outer key is the version of the reference package
-             * the inner key is the combination of name and version of the dependent package
-             */
-            type Result = { [key: string]: { [key: string]: null } }
 
             const rawResult: RawResult = JSON.parse(stdout)
             if (rawResult.length === 1) {
                 if (beVerbose) {
-                    console.log(`success: all dependencies use the same version of ${referencePackage}`)
+                    console.log(`success: all dependencies use the same version of ${referencePackage}: ${rawResult[0].version}`)
                 }
 
             } else {
                 console.error(`there are dependecies on multiple versions of ${referencePackage}`)
 
+                /*
+                build up the Result
+                */
+                /**
+                 * the outer key is the version of the reference package
+                 * the inner key is the combination of name and version of the dependent package
+                 */
+                type Result = { [key: string]: { [key: string]: null } }
                 const result: Result = {}
                 rawResult.forEach(($) => {
                     if ($.dependents === undefined) {
@@ -128,6 +131,9 @@ cp.exec(
                         loop($)
                     })
                 })
+                /*
+                print the overview
+                */
                 Object.keys(result).forEach(($) => {
                     console.error($)
                     const entry = result[$]
