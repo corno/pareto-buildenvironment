@@ -132,7 +132,7 @@ cp.exec(
                     console.error($)
                     const entry = result[$]
                     Object.keys(entry).forEach(($) => {
-                        console.error(` $`)
+                        console.error(` ${$}`)
                     })
 
                 })
